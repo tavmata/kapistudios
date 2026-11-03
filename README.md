@@ -46,3 +46,4 @@ Acesse em: `http://localhost:8000`
 
 Este repositório foi estruturado para ser servido diretamente pelo **GitHub Pages**:
 - Os caminhos de arquivos (`assets/`, `style.css`, `main.js`) são relativos, funcionando perfeitamente em subdiretórios (`https://tavmata.github.io/kapistudios/`) ou em domínios personalizados (`CNAME`).
+
