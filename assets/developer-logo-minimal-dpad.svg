@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <!-- O Losango D-Pad: Fusão minimalista do Losango Brasileiro com os 4 Botões Direcionais de Ação -->
+  <g id="diamond-dpad" transform="translate(60, 60)">
+    <!-- Botão Superior (Norte) -->
+    <path d="M 0 -50 L 35 -15 L 14 -15 L 0 -29 L -14 -15 L -35 -15 Z" fill="#f59e0b" />
+    
+    <!-- Botão Direito (Leste) -->
+    <path d="M 50 0 L 15 35 L 15 14 L 29 0 L 15 -14 L 15 -35 Z" fill="#d97706" />
+    
+    <!-- Botão Inferior (Sul) -->
+    <path d="M 0 50 L -35 15 L -14 15 L 0 29 L 14 15 L 35 15 Z" fill="#b45309" />
+    
+    <!-- Botão Esquerdo (Oeste) -->
+    <path d="M -50 0 L -15 -35 L -15 -14 L -29 0 L -15 14 L -15 35 Z" fill="#f59e0b" />
+    
+    <!-- Ponto Central (Núcleo / Soul Gem) -->
+    <circle cx="0" cy="0" r="6" fill="#fef08a" />
+  </g>
+</svg>

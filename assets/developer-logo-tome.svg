@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="tomeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="50%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+
+  <g fill="none" stroke="url(#tomeGrad)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Handheld / Controller Shell forming an Open Tome (Reading + Game Dev) -->
+    <path d="M 22 42 C 22 34 28 28 36 28 H 54 L 60 34 L 66 28 H 84 C 92 28 98 34 98 42 V 76 C 98 84 90 90 82 90 H 64 L 60 86 L 56 90 H 38 C 30 90 22 84 22 76 Z" stroke-width="3"/>
+
+    <!-- Center Spine / Fold Line -->
+    <line x1="60" y1="34" x2="60" y2="86" stroke-width="2" stroke-opacity="0.6"/>
+
+    <!-- Left Page: Retro Game D-Pad -->
+    <g stroke-width="2.4">
+      <path d="M 38 48 V 43 C 38 42 39 41 40 41 H 42 C 43 41 44 42 44 43 V 48 H 49 C 50 48 51 49 51 50 V 52 C 51 53 50 54 49 54 H 44 V 59 C 44 60 43 61 42 61 H 40 C 39 61 38 60 38 59 V 54 H 33 C 32 54 31 53 31 52 V 50 C 31 49 32 48 33 48 Z" fill="rgba(129, 140, 248, 0.15)"/>
+      <circle cx="41" cy="51" r="1.2" fill="#818cf8" stroke="none"/>
+    </g>
+
+    <!-- Reading Page Ribbons (text / code lines) -->
+    <line x1="33" y1="68" x2="49" y2="68" stroke-width="2" stroke-opacity="0.45"/>
+    <line x1="33" y1="74" x2="45" y2="74" stroke-width="2" stroke-opacity="0.45"/>
+
+    <!-- Right Page: 4 Action Buttons arranged as Diamond (A, B, X, Y) -->
+    <g stroke-width="2" fill="none">
+      <circle cx="79" cy="44" r="3.2" stroke="#c084fc"/>
+      <circle cx="71" cy="51" r="3.2" stroke="#818cf8"/>
+      <circle cx="87" cy="51" r="3.2" stroke="#38bdf8"/>
+      <circle cx="79" cy="58" r="3.2" stroke="#67e8f9"/>
+      
+      <!-- Inner dots -->
+      <circle cx="79" cy="44" r="1.2" fill="#c084fc" stroke="none"/>
+      <circle cx="71" cy="51" r="1.2" fill="#818cf8" stroke="none"/>
+      <circle cx="87" cy="51" r="1.2" fill="#38bdf8" stroke="none"/>
+      <circle cx="79" cy="58" r="1.2" fill="#67e8f9" stroke="none"/>
+    </g>
+
+    <!-- Right Page Ribbons (code lines) -->
+    <line x1="71" y1="68" x2="87" y2="68" stroke-width="2" stroke-opacity="0.45"/>
+    <line x1="75" y1="74" x2="87" y2="74" stroke-width="2" stroke-opacity="0.45"/>
+
+    <!-- Bookmark Ribbon Hanging from Bottom Spine -->
+    <path d="M 57 88 V 100 L 60 97 L 63 100 V 88" stroke-width="2" fill="rgba(56, 189, 248, 0.25)" stroke="#38bdf8"/>
+  </g>
+</svg>

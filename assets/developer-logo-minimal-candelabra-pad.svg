@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <!-- O D-Pad Candelabro: Cruz Direcional com Ramos Ascendentes (3 Formas Puras) -->
+  <g id="candelabra-pad" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Haste Vertical Central com Seta Superior (Direção para Cima / Ascensão) -->
+    <path d="M 60 96 V 34" stroke="#f59e0b" stroke-width="12" />
+    <polygon points="60,18 48,34 72,34" fill="#f59e0b" stroke="none" />
+
+    <!-- Braço Esquerdo Curvado em Candelabro (Direção Up-Left) -->
+    <path d="M 60 76 C 40 76 28 64 28 44" stroke="#d97706" stroke-width="10" />
+    <polygon points="28,32 18,46 38,46" fill="#d97706" stroke="none" />
+
+    <!-- Braço Direito Curvado em Candelabro (Direção Up-Right) -->
+    <path d="M 60 76 C 80 76 92 64 92 44" stroke="#d97706" stroke-width="10" />
+    <polygon points="92,32 82,46 102,46" fill="#d97706" stroke="none" />
+
+    <!-- Núcleo de Ação -->
+    <circle cx="60" cy="76" r="6" fill="#fef08a" stroke="none" />
+  </g>
+</svg>

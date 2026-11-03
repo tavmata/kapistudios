@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <!-- Monograma K Arcade: Feito de 3 Peças Puras de Gamepad -->
+  <g id="k-arcade">
+    <!-- Haste Vertical (Barra do D-Pad / Grip) -->
+    <rect x="26" y="20" width="18" height="80" rx="9" fill="#f59e0b" />
+    
+    <!-- Botão Superior Diagonal (Braço do K) -->
+    <rect x="52" y="24" width="18" height="48" rx="9" transform="rotate(45, 52, 24)" fill="#d97706" />
+
+    <!-- Botão Inferior Diagonal (Perna do K) -->
+    <rect x="44" y="60" width="18" height="48" rx="9" transform="rotate(-45, 44, 60)" fill="#b45309" />
+
+    <!-- Ponto de Ação Central (Botão de Input) -->
+    <circle cx="58" cy="60" r="5" fill="#fef08a" />
+  </g>
+</svg>

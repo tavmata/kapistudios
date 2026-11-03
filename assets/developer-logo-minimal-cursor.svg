@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <!-- O Cursor Pinhão: Semente-Seta de Mira e Play Button -->
+  <g id="cursor-pinhao">
+    <!-- Corpo da Seta / Semente apontando para o Topo-Direito (Mira / Ação) -->
+    <path d="M 98 22 C 92 38 72 74 46 94 C 36 102 24 100 20 90 C 16 80 20 68 30 58 C 50 38 82 24 98 22 Z" 
+          fill="#d97706" />
+
+    <!-- Núcleo de D-Pad / Mira Cortada em Espaço Negativo -->
+    <path d="M 54 44 H 60 V 50 H 66 V 56 H 60 V 62 H 54 V 56 H 48 V 50 H 54 Z" 
+          fill="#090d14" />
+          
+    <circle cx="57" cy="53" r="1.5" fill="#fef08a" />
+  </g>
+</svg>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kapi Studios &bull; Florestas, rios e magia</title>
+  <meta name="description" content="Kapi Studios é um pequeno estúdio brasileiro de jogos. Conheça 2D MMORPG, nossa aventura de florestas encantadas, rios tranquilos e magia antiga." />
+  <meta name="theme-color" content="#0b1a13" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kapistudios.kich.dev.br/" />
+  <meta property="og:title" content="Kapi Studios &bull; Florestas, rios e magia" />
+  <meta property="og:description" content="Explore matas encantadas, siga o curso dos rios e descubra a magia escondida em cada clareira em 2D MMORPG." />
+  <meta property="og:image" content="https://kapistudios.kich.dev.br/assets/kapi-studios-logo.svg" />
+  <link rel="icon" type="image/svg+xml" href="assets/kapi-mark.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a href="#topo" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="#topo" class="brand" id="brand-link" aria-label="Kapi Studios - início">
+        <img src="assets/kapi-mark.svg" alt="" width="46" height="37" class="brand-mark" />
+        <span class="brand-text">
+          <span class="brand-kapi">KAPI</span>
+          <span class="brand-studios">STUDIOS</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
+        <a href="#mundo" id="nav-mundo" class="nav-link">O Mundo</a>
+        <a href="#classes" id="nav-classes" class="nav-link">Classes</a>
+        <a href="#estudio" id="nav-estudio" class="nav-link">O Estúdio</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="https://mmorpg.kich.dev.br" target="_blank" rel="noopener" class="btn btn-orange btn-sm" id="header-play-btn">
+          <span class="status-dot" aria-hidden="true"></span>
+          Jogar Agora
+        </a>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menu de navegação">
+          <svg class="icon-menu" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+          <svg class="icon-close" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="topo">
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <!-- Jungle canopy backdrop -->
+      <svg class="hero-canopy" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+        <defs>
+          <path id="lf" d="M0 0 C 16 -26 20 -72 0 -120 C -20 -72 -16 -26 0 0 Z"/>
+          <path id="lfh" d="M0 0 C 16 -26 20 -72 0 -120 Z"/>
+          <path id="hl" d="M0 0 C -46 -18 -70 -74 -36 -110 C -18 -126 0 -114 0 -98 C 0 -114 18 -126 36 -110 C 70 -74 46 -18 0 0 Z"/>
+          <radialGradient id="heroGlow" cx="70%" cy="62%" r="42%">
+            <stop offset="0%" stop-color="#4f9c68" stop-opacity="0.38"/>
+            <stop offset="55%" stop-color="#2a6040" stop-opacity="0.14"/>
+            <stop offset="100%" stop-color="#12261e" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="ray" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e9ffd9" stop-opacity="0.10"/>
+            <stop offset="100%" stop-color="#e9ffd9" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect width="1440" height="800" fill="url(#heroGlow)"/>
+        <!-- Light rays through the canopy -->
+        <g class="rays">
+          <polygon points="880,0 950,0 1160,800 1010,800" fill="url(#ray)"/>
+          <polygon points="1010,0 1050,0 1300,800 1210,800" fill="url(#ray)"/>
+          <polygon points="700,0 735,0 860,800 790,800" fill="url(#ray)" opacity="0.6"/>
+        </g>
+        <!-- Far canopy -->
+        <g class="sway sway-slow" fill="#0f2a1d">
+          <use href="#lf" transform="translate(40,-10) rotate(175) scale(1.6)"/>
+          <use href="#lf" transform="translate(140,-10) rotate(185) scale(1.4)"/>
+          <use href="#lf" transform="translate(260,-10) rotate(170) scale(1.7)"/>
+          <use href="#lf" transform="translate(380,-10) rotate(190) scale(1.3)"/>
+          <use href="#lf" transform="translate(500,-10) rotate(178) scale(1.5)"/>
+          <use href="#lf" transform="translate(640,-10) rotate(186) scale(1.6)"/>
+          <use href="#lf" transform="translate(760,-10) rotate(172) scale(1.4)"/>
+          <use href="#lf" transform="translate(880,-10) rotate(184) scale(1.7)"/>
+          <use href="#lf" transform="translate(1000,-10) rotate(176) scale(1.5)"/>
+          <use href="#lf" transform="translate(1120,-10) rotate(188) scale(1.6)"/>
+          <use href="#lf" transform="translate(1240,-10) rotate(174) scale(1.4)"/>
+          <use href="#lf" transform="translate(1360,-10) rotate(182) scale(1.7)"/>
+          <use href="#lf" transform="translate(1440,-10) rotate(178) scale(1.5)"/>
+        </g>
+        <!-- Mid canopy: heart leaves -->
+        <g class="sway sway-mid" fill="#153a27">
+          <use href="#hl" transform="translate(80,-20) rotate(165) scale(1.2)"/>
+          <use href="#hl" transform="translate(330,-30) rotate(195) scale(1.0)"/>
+          <use href="#hl" transform="translate(610,-25) rotate(175) scale(1.1)"/>
+          <use href="#hl" transform="translate(920,-30) rotate(190) scale(1.0)"/>
+          <use href="#hl" transform="translate(1160,-20) rotate(170) scale(1.3)"/>
+          <use href="#hl" transform="translate(1400,-25) rotate(198) scale(1.1)"/>
+        </g>
+        <!-- Vines -->
+        <g class="sway sway-vine">
+          <g fill="none" stroke="#2f7044" stroke-width="3" stroke-linecap="round" opacity="0.55">
+            <path d="M220 0 C 232 120 200 200 216 300"/>
+            <path d="M560 0 C 548 90 575 160 560 230"/>
+            <path d="M1180 0 C 1196 140 1164 240 1186 360"/>
+            <path d="M1352 0 C 1342 80 1364 140 1350 210"/>
+          </g>
+          <g fill="#2f7044" opacity="0.7">
+            <use href="#lf" transform="translate(222,150) rotate(130) scale(0.22)"/>
+            <use href="#lf" transform="translate(212,240) rotate(-130) scale(0.2)"/>
+            <use href="#lf" transform="translate(560,120) rotate(-125) scale(0.2)"/>
+            <use href="#lf" transform="translate(1186,180) rotate(128) scale(0.24)"/>
+            <use href="#lf" transform="translate(1178,290) rotate(-130) scale(0.22)"/>
+            <use href="#lf" transform="translate(1356,110) rotate(125) scale(0.2)"/>
+          </g>
+        </g>
+        <!-- Near canopy, corners -->
+        <g class="sway sway-near" fill="#1b4a31">
+          <use href="#lf" transform="translate(0,-20) rotate(200) scale(2.2)"/>
+          <use href="#lf" transform="translate(95,-20) rotate(165) scale(1.8)"/>
+          <use href="#hl" transform="translate(170,-30) rotate(185) scale(1.2)"/>
+          <use href="#lf" transform="translate(1335,-20) rotate(160) scale(2.0)"/>
+          <use href="#lf" transform="translate(1440,-20) rotate(195) scale(2.3)"/>
+          <use href="#hl" transform="translate(1250,-30) rotate(172) scale(1.15)"/>
+        </g>
+        <g class="sway sway-near" fill="#174029">
+          <use href="#lfh" transform="translate(0,-20) rotate(200) scale(2.2)"/>
+          <use href="#lfh" transform="translate(95,-20) rotate(165) scale(1.8)"/>
+          <use href="#lfh" transform="translate(1335,-20) rotate(160) scale(2.0)"/>
+          <use href="#lfh" transform="translate(1440,-20) rotate(195) scale(2.3)"/>
+        </g>
+      </svg>
+
+      <canvas class="fireflies" data-count="42" aria-hidden="true"></canvas>
+
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow" id="hero-eyebrow">
+            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 1 C 13 8 16 11 23 12 C 16 13 13 16 12 23 C 11 16 8 13 1 12 C 8 11 11 8 12 1 Z" fill="currentColor"/></svg>
+            Kapi Studios apresenta
+          </span>
+          <h1 class="hero-title" id="hero-title">
+            Desperte em um mundo de
+            <span class="hl-forest">florestas</span>,
+            <span class="hl-river">rios</span> e
+            <span class="hl-magic">magia</span>
+          </h1>
+          <p class="hero-lead">
+            <strong>2D MMORPG</strong> é a nossa primeira grande aventura. Explore matas encantadas, siga o curso dos rios, enfrente criaturas lendárias e descubra a magia escondida em cada clareira.
+          </p>
+
+          <div class="hero-cta">
+            <a href="https://mmorpg.kich.dev.br" target="_blank" rel="noopener" class="btn btn-orange btn-lg" id="hero-play-btn">
+              <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M5 3 L17 10 L5 17 Z" fill="currentColor"/></svg>
+              Jogar 2D MMORPG
+            </a>
+            <button type="button" class="btn btn-ghost btn-lg" id="btn-open-trailer">
+              <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 6 L14 10 L8 14 Z" fill="currentColor"/></svg>
+              Assistir trailer
+            </button>
+          </div>
+
+          <p class="hero-meta">
+            <span class="meta-badge">Grátis no navegador</span>
+            <span class="meta-sep" aria-hidden="true">&bull;</span>
+            <span>Sem download</span>
+            <span class="meta-sep" aria-hidden="true">&bull;</span>
+            <span>Servidor Brasileiro</span>
+          </p>
+
+          <ul class="hero-chips" aria-label="Destaques do jogo">
+            <li><a href="#mundo"><span class="chip-dot dot-forest"></span>Exploração Viva</a></li>
+            <li><a href="#classes"><span class="chip-dot dot-magic"></span>4 Classes Únicas</a></li>
+            <li><a href="#mundo"><span class="chip-dot dot-ember"></span>Forja Artesanal</a></li>
+            <li><a href="#mundo"><span class="chip-dot dot-river"></span>Mascotes &amp; Montarias</a></li>
+          </ul>
+        </div>
+
+        <!-- Capybara on the river islet -->
+        <div class="hero-scene reveal reveal-delay">
+          <div class="capy-interactive" id="capy-pet" role="button" tabindex="0" aria-label="Fazer carinho na capivara">
+            <span class="capy-tooltip" id="capy-tooltip" aria-live="polite">Clique para fazer carinho</span>
+            <svg class="capy-scene" viewBox="0 0 520 380" role="img" aria-label="Uma capivara descansando em uma ilhota no rio, cercada por folhas">
+              <defs>
+                <radialGradient id="capyGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#7fd39a" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="#7fd39a" stop-opacity="0"/>
+                </radialGradient>
+                <path id="blade" d="M-3 0 C -3 -14 0 -28 6 -40 C 3 -26 3 -12 3 0 Z"/>
+                <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+                  <feGaussianBlur stdDeviation="4"/>
+                </filter>
+              </defs>
+              <circle cx="300" cy="230" r="210" fill="url(#capyGlow)"/>
+              <!-- Ferns behind -->
+              <g class="sway-up">
+                <use href="#lf" transform="translate(380,335) rotate(20) scale(1.45)" fill="#27774a"/>
+                <use href="#lfh" transform="translate(380,335) rotate(20) scale(1.45)" fill="#216640"/>
+                <use href="#lf" transform="translate(425,335) rotate(40) scale(1.2)" fill="#2f9e5a"/>
+                <use href="#lfh" transform="translate(425,335) rotate(40) scale(1.2)" fill="#288a4e"/>
+                <use href="#lf" transform="translate(455,338) rotate(58) scale(1.0)" fill="#3fb36a"/>
+                <use href="#lf" transform="translate(340,335) rotate(4) scale(1.55)" fill="#2f9e5a"/>
+                <use href="#lfh" transform="translate(340,335) rotate(4) scale(1.55)" fill="#288a4e"/>
+              </g>
+              <g class="sway-up sway-up-alt">
+                <use href="#lf" transform="translate(125,338) rotate(-25) scale(1.1)" fill="#27774a"/>
+                <use href="#lf" transform="translate(95,340) rotate(-48) scale(0.9)" fill="#2f9e5a"/>
+                <use href="#lfh" transform="translate(95,340) rotate(-48) scale(0.9)" fill="#288a4e"/>
+              </g>
+              <!-- Islet -->
+              <ellipse cx="270" cy="342" rx="222" ry="24" fill="#2c3f24"/>
+              <ellipse cx="270" cy="335" rx="206" ry="16" fill="#46612f"/>
+              <!-- Capybara -->
+              <g class="capy">
+                <path d="M120 334 C 104 262 150 206 244 203 C 294 202 326 212 342 228 L 348 334 Z" fill="#a8622f"/>
+                <ellipse cx="186" cy="280" rx="62" ry="46" fill="#b5703a"/>
+                <path d="M164 252 q 10 -8 20 0 M246 222 q 10 -7 20 0 M146 288 q 8 -6 16 0" fill="none" stroke="#7f4520" stroke-width="3.5" stroke-linecap="round"/>
+                <rect x="206" y="322" width="30" height="15" rx="7.5" fill="#8a4f25"/>
+                <rect x="262" y="322" width="30" height="15" rx="7.5" fill="#8a4f25"/>
+                <g class="capy-head">
+                  <path d="M306 236 C 306 206 336 193 374 195 C 416 197 442 215 444 243 C 446 277 426 299 384 301 L 314 301 C 306 279 306 256 306 236 Z" fill="#c98a4b"/>
+                  <g class="capy-ear">
+                    <circle cx="340" cy="203" r="16" fill="#8a5530"/>
+                    <circle cx="341" cy="205" r="9" fill="#e8a191"/>
+                  </g>
+                  <path d="M370 263 C 370 247 392 241 414 243 C 434 245 446 257 444 273 C 442 291 424 301 398 300 C 380 299 370 283 370 263 Z" fill="#ecc48e"/>
+                  <ellipse cx="376" cy="271" rx="12" ry="7" fill="#f2a48f" opacity="0.85"/>
+                  <g class="capy-eye">
+                    <circle cx="384" cy="237" r="7.5" fill="#2a160d"/>
+                    <circle cx="386.5" cy="234" r="2.4" fill="#ffffff"/>
+                  </g>
+                  <path d="M390 276 q 18 10 36 -4" fill="none" stroke="#2a160d" stroke-width="4" stroke-linecap="round"/>
+                  <ellipse cx="434" cy="237" rx="10" ry="12" fill="#3b1d12"/>
+                  <circle cx="431" cy="232" r="3" fill="#ffffff" opacity="0.5"/>
+                </g>
+              </g>
+              <!-- Petting Hearts (Triggered on click) -->
+              <g class="capy-hearts" id="capy-hearts" aria-hidden="true">
+                <path class="heart h1" d="M360 175 c -5 -10 -18 -10 -18 0 c 0 8 18 18 18 18 s 18 -10 18 -18 c 0 -10 -13 -10 -18 0 Z" fill="#f2a48f"/>
+                <path class="heart h2" d="M395 155 c -4 -8 -14 -8 -14 0 c 0 6 14 14 14 14 s 14 -8 14 -14 c 0 -8 -10 -8 -14 0 Z" fill="#f6e27a"/>
+              </g>
+              <!-- Magic glow flowers -->
+              <g class="magic-flower">
+                <path d="M86 340 C 84 326 88 316 92 306 C 91 318 90 328 90 340 Z" fill="#3c8f4c"/>
+                <circle cx="92" cy="304" r="9" fill="#f6e27a" filter="url(#softGlow)" opacity="0.9"/>
+                <circle cx="92" cy="304" r="4" fill="#fff7c2"/>
+              </g>
+              <g class="magic-flower magic-flower-alt">
+                <path d="M466 342 C 464 330 468 322 471 314 C 470 324 470 332 470 342 Z" fill="#3c8f4c"/>
+                <circle cx="471" cy="312" r="8" fill="#b9a4ff" filter="url(#softGlow)" opacity="0.9"/>
+                <circle cx="471" cy="312" r="3.5" fill="#efe8ff"/>
+              </g>
+              <!-- Grass in front -->
+              <g fill="#4fae5f">
+                <use href="#blade" transform="translate(70,346) rotate(-10)"/>
+                <use href="#blade" transform="translate(110,348) rotate(6) scale(0.8)"/>
+                <use href="#blade" transform="translate(150,350) rotate(-4) scale(0.7)"/>
+                <use href="#blade" transform="translate(330,350) rotate(8) scale(0.75)"/>
+                <use href="#blade" transform="translate(400,348) rotate(-6) scale(0.9)"/>
+                <use href="#blade" transform="translate(440,346) rotate(12)"/>
+              </g>
+              <g fill="#3c8f4c">
+                <use href="#blade" transform="translate(84,348) rotate(14) scale(0.85)"/>
+                <use href="#blade" transform="translate(190,352) rotate(-12) scale(0.6)"/>
+                <use href="#blade" transform="translate(300,352) rotate(10) scale(0.6)"/>
+                <use href="#blade" transform="translate(420,350) rotate(-14) scale(0.8)"/>
+              </g>
+              <!-- Twinkles -->
+              <g fill="#fff3b0">
+                <path class="twinkle t1" d="M250 120 C 251 126 253 128 259 129 C 253 130 251 132 250 138 C 249 132 247 130 241 129 C 247 128 249 126 250 120 Z"/>
+                <path class="twinkle t2" d="M470 170 C 471 175 472 176 477 177 C 472 178 471 179 470 184 C 469 179 468 178 463 177 C 468 176 469 175 470 170 Z"/>
+                <path class="twinkle t3" d="M150 180 C 151 185 152 186 157 187 C 152 188 151 189 150 194 C 149 189 148 188 143 187 C 148 186 149 185 150 180 Z"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- River -->
+      <div class="hero-river" aria-hidden="true">
+        <svg class="river-edge" viewBox="0 0 1440 40" preserveAspectRatio="none">
+          <path d="M0 16 C 120 6 240 24 360 14 S 600 6 720 14 S 960 24 1080 14 S 1320 6 1440 14 L1440 40 L0 40 Z" fill="#2f7b76" opacity="0.6"/>
+          <path d="M0 20 C 140 12 260 28 380 18 S 620 10 740 18 S 980 28 1100 18 S 1320 12 1440 18 L1440 40 L0 40 Z" fill="#1f5c5c"/>
+        </svg>
+        <span class="ripple" style="left:6%;top:30%;width:70px"></span>
+        <span class="ripple" style="left:18%;top:58%;width:44px;animation-delay:-2s"></span>
+        <span class="ripple" style="left:31%;top:38%;width:90px;animation-delay:-4s"></span>
+        <span class="ripple" style="left:44%;top:70%;width:56px;animation-delay:-1s"></span>
+        <span class="ripple" style="left:57%;top:46%;width:80px;animation-delay:-3s"></span>
+        <span class="ripple" style="left:70%;top:66%;width:48px;animation-delay:-5s"></span>
+        <span class="ripple" style="left:82%;top:34%;width:74px;animation-delay:-2.5s"></span>
+        <span class="ripple" style="left:92%;top:60%;width:40px;animation-delay:-4.5s"></span>
+      </div>
+
+      <!-- Foreground leaves -->
+      <svg class="fg-leaves fg-left" viewBox="0 0 400 320" aria-hidden="true">
+        <g class="sway-up">
+          <use href="#lf" transform="translate(0,330) rotate(-35) scale(2)" fill="#10291c"/>
+          <use href="#lf" transform="translate(40,330) rotate(-10) scale(2.2)" fill="#0b1e15"/>
+          <use href="#hl" transform="translate(80,340) rotate(-20) scale(1.4)" fill="#0e2619"/>
+          <use href="#lf" transform="translate(115,335) rotate(15) scale(1.8)" fill="#0e2619"/>
+          <use href="#lf" transform="translate(175,340) rotate(32) scale(1.3)" fill="#0b1e15"/>
+        </g>
+      </svg>
+      <svg class="fg-leaves fg-right" viewBox="0 0 400 320" aria-hidden="true">
+        <g class="sway-up sway-up-alt">
+          <use href="#lf" transform="translate(0,330) rotate(-35) scale(2)" fill="#10291c"/>
+          <use href="#lf" transform="translate(40,330) rotate(-10) scale(2.2)" fill="#0b1e15"/>
+          <use href="#hl" transform="translate(80,340) rotate(-20) scale(1.4)" fill="#0e2619"/>
+          <use href="#lf" transform="translate(115,335) rotate(15) scale(1.8)" fill="#0e2619"/>
+          <use href="#lf" transform="translate(175,340) rotate(32) scale(1.3)" fill="#0b1e15"/>
+        </g>
+      </svg>
+    </section>
+
+    <!-- ===================== THE WORLD ===================== -->
+    <section class="section section-world" id="mundo" aria-labelledby="mundo-title">
+      <div class="container world-grid">
+        <div class="world-media reveal">
+          <div class="video-frame">
+            <video id="world-video" autoplay muted loop playsinline preload="metadata">
+              <source src="assets/mmorpg-preview.mp4" type="video/mp4" />
+            </video>
+            <button type="button" class="video-expand" id="btn-world-trailer" aria-label="Assistir trailer em tela cheia">
+              <span class="video-expand-badge">
+                <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M6 4 L16 10 L6 16 Z" fill="currentColor"/></svg>
+                <span>Expandir Gameplay</span>
+              </span>
+            </button>
+          </div>
+          <svg class="frame-leaf frame-leaf-tl" viewBox="0 0 120 120" aria-hidden="true">
+            <use href="#lf" transform="translate(70,90) rotate(-60) scale(0.7)" fill="#2f9e5a"/>
+            <use href="#lf" transform="translate(70,90) rotate(-20) scale(0.6)" fill="#27774a"/>
+          </svg>
+          <svg class="frame-leaf frame-leaf-br" viewBox="0 0 120 120" aria-hidden="true">
+            <use href="#lf" transform="translate(50,30) rotate(120) scale(0.7)" fill="#2f9e5a"/>
+            <use href="#lf" transform="translate(50,30) rotate(160) scale(0.6)" fill="#3fb36a"/>
+          </svg>
+        </div>
+
+        <div class="world-copy reveal reveal-delay">
+          <span class="eyebrow">O mundo de 2D MMORPG</span>
+          <h2 class="section-title" id="mundo-title">Cada trilha guarda uma história</h2>
+          <p class="section-lead">
+            Das margens calmas dos rios às profundezas de florestas antigas, o mundo muda com o clima e com o passar do dia. Siga vaga-lumes até ruínas esquecidas, pesque à beira da água ou reúna amigos para enfrentar o que dorme nas cavernas.
+          </p>
+          <ul class="world-list">
+            <li>
+              <span class="wl-icon wl-forest" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 C 15 6 18 8 21 9 C 18 10 15 10 13 9.5 L 13 22 L 11 22 L 11 9.5 C 9 10 6 10 3 9 C 6 8 9 6 12 2 Z" fill="currentColor"/></svg></span>
+              <span><strong>Ciclos vivos:</strong> Biomas que mudam com a chuva, a névoa e a luz do dia</span>
+            </li>
+            <li>
+              <span class="wl-icon wl-magic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 1 C 13 8 16 11 23 12 C 16 13 13 16 12 23 C 11 16 8 13 1 12 C 8 11 11 8 12 1 Z" fill="currentColor"/></svg></span>
+              <span><strong>Desafios antigos:</strong> Chefes lendários escondidos em ruínas e cavernas</span>
+            </li>
+            <li>
+              <span class="wl-icon wl-river" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9 C 6 6 9 12 12 9 C 15 6 18 12 22 9 L 22 12 C 18 15 15 9 12 12 C 9 15 6 9 2 12 Z M2 15 C 6 12 9 18 12 15 C 15 12 18 18 22 15 L 22 18 C 18 21 15 15 12 18 C 9 21 6 15 2 18 Z" fill="currentColor"/></svg></span>
+              <span><strong>Economia de jogadores:</strong> Um mercado vivo, movido pelos próprios aventureiros</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="features-grid">
+          <article class="feature-card reveal">
+            <div class="feature-icon fi-forest" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><path d="M16 3 C 20 8 24 10 29 11 C 24 13 20 13 17.5 12.5 L 17.5 29 L 14.5 29 L 14.5 12.5 C 12 13 8 13 3 11 C 8 10 12 8 16 3 Z" fill="currentColor"/><path d="M16 14 C 19 17 22 18 26 18.5 C 22 20 19 20 16 19.5 C 13 20 10 20 6 18.5 C 10 18 13 17 16 14 Z" fill="currentColor" opacity="0.7"/></svg>
+            </div>
+            <h3>Florestas ancestrais</h3>
+            <p>Bosques de araucárias, clareiras escondidas e trilhas que ganham vida com a luz da manhã.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-icon fi-river" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><path d="M16 3 C 21 10 25 15 25 20 C 25 25 21 29 16 29 C 11 29 7 25 7 20 C 7 15 11 10 16 3 Z" fill="currentColor"/><ellipse cx="12.5" cy="20" rx="2" ry="3.5" fill="#ffffff" opacity="0.35"/></svg>
+            </div>
+            <h3>Rios e pântanos</h3>
+            <p>Margens tranquilas, cachoeiras e brejos misteriosos onde criaturas raras se escondem.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-icon fi-magic" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><path d="M14 2 C 15 10 18 13 26 14 C 18 15 15 18 14 26 C 13 18 10 15 2 14 C 10 13 13 10 14 2 Z" fill="currentColor"/><path d="M25 20 C 25.5 23 27 24.5 30 25 C 27 25.5 25.5 27 25 30 C 24.5 27 23 25.5 20 25 C 23 24.5 24.5 23 25 20 Z" fill="currentColor" opacity="0.7"/></svg>
+            </div>
+            <h3>Magia antiga</h3>
+            <p>Runas, feitiços elementais e artes de sangue para quem ousa estudar os segredos do mundo.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-icon fi-ember" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><path d="M5 9 L 18 9 L 21 6 L 27 6 L 27 14 L 21 14 L 18 11 L 5 11 C 4 11 3 10.5 3 10 C 3 9.5 4 9 5 9 Z" fill="currentColor"/><rect x="19" y="13" width="4" height="16" rx="2" fill="currentColor" opacity="0.75"/></svg>
+            </div>
+            <h3>Forja artesanal</h3>
+            <p>Aqueça o metal, acerte o ritmo do martelo e crie armas com a sua própria assinatura.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-icon fi-paw" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><ellipse cx="16" cy="21" rx="7" ry="6" fill="currentColor"/><ellipse cx="7" cy="14" rx="3" ry="3.8" fill="currentColor"/><ellipse cx="12.5" cy="8.5" rx="3" ry="3.8" fill="currentColor"/><ellipse cx="19.5" cy="8.5" rx="3" ry="3.8" fill="currentColor"/><ellipse cx="25" cy="14" rx="3" ry="3.8" fill="currentColor"/></svg>
+            </div>
+            <h3>Companheiros fiéis</h3>
+            <p>Lobos, dragões e outros mascotes que lutam ao seu lado e podem até virar montaria.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-icon fi-camp" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><path d="M16 3 C 20 9 23 12 23 17 C 23 21 20 24 16 24 C 12 24 9 21 9 17 C 9 14 11 12 12 10 C 13 13 14 14 15 14 C 15 10 15 7 16 3 Z" fill="currentColor"/><rect x="5" y="25" width="22" height="3.5" rx="1.75" fill="currentColor" opacity="0.6" transform="rotate(-8 16 26.75)"/><rect x="5" y="25" width="22" height="3.5" rx="1.75" fill="currentColor" opacity="0.6" transform="rotate(8 16 26.75)"/></svg>
+            </div>
+            <h3>Aventura em grupo</h3>
+            <p>Monte um grupo, entre em uma guilda, negocie no mercado e enfrente chefes ao redor da fogueira.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CLASSES ===================== -->
+    <section class="section section-classes" id="classes" aria-labelledby="classes-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Escolha seu caminho</span>
+          <h2 class="section-title" id="classes-title">Quatro trilhas, uma só floresta</h2>
+          <p class="section-lead">Cada classe tem a sua árvore de talentos, seus feitiços e seu jeito de enfrentar o desconhecido.</p>
+        </div>
+
+        <div class="classes-grid">
+          <article class="class-card class-warrior reveal">
+            <div class="class-card-top">
+              <div class="class-emblem" aria-hidden="true">
+                <span class="rune-ring"></span>
+                <svg viewBox="0 0 32 32"><path d="M16 2 L 19 6 L 18 20 L 14 20 L 13 6 Z" fill="currentColor"/><rect x="9" y="20" width="14" height="3" rx="1.5" fill="currentColor"/><rect x="14.5" y="23" width="3" height="6" rx="1.2" fill="currentColor" opacity="0.8"/></svg>
+              </div>
+              <span class="class-role">Linha de Frente &bull; Defesa</span>
+            </div>
+            <h3>Guerreiro</h3>
+            <p>Firme como uma árvore centenária. Escudos pesados, montantes e golpes que fazem o chão tremer.</p>
+            <div class="class-signature">
+              <span class="sig-label">Arte de Destaque</span>
+              <strong>Quebra-Terra &amp; Bastião</strong>
+            </div>
+            <ul class="class-tags"><li>Escudo</li><li>Montante</li><li>Resistência</li></ul>
+          </article>
+
+          <article class="class-card class-blood reveal">
+            <div class="class-card-top">
+              <div class="class-emblem" aria-hidden="true">
+                <span class="rune-ring"></span>
+                <svg viewBox="0 0 32 32"><path d="M16 3 C 21 10 25 15 25 20 C 25 25 21 29 16 29 C 11 29 7 25 7 20 C 7 15 11 10 16 3 Z" fill="currentColor"/><ellipse cx="12.5" cy="20" rx="2" ry="3.5" fill="#ffffff" opacity="0.3"/></svg>
+              </div>
+              <span class="class-role">Dreno Vital &bull; Sacrifício</span>
+            </div>
+            <h3>Hemomante</h3>
+            <p>Domina a magia do sangue. Transforma cada ferida em força e conjura lanças carmesins.</p>
+            <div class="class-signature">
+              <span class="sig-label">Arte de Destaque</span>
+              <strong>Lança Carmesim &amp; Pacto</strong>
+            </div>
+            <ul class="class-tags"><li>Sangue</li><li>Cura</li><li>Lanças</li></ul>
+          </article>
+
+          <article class="class-card class-arcane reveal">
+            <div class="class-card-top">
+              <div class="class-emblem" aria-hidden="true">
+                <span class="rune-ring"></span>
+                <svg viewBox="0 0 32 32"><path d="M16 2 L 23 12 L 16 30 L 9 12 Z" fill="currentColor"/><path d="M16 2 L 23 12 L 16 14 Z" fill="#ffffff" opacity="0.3"/></svg>
+              </div>
+              <span class="class-role">Dano em Área &bull; Controle</span>
+            </div>
+            <h3>Mago</h3>
+            <p>Ouve o sussurro das runas. Raios encadeados, orbes de fogo e barreiras arcanas.</p>
+            <div class="class-signature">
+              <span class="sig-label">Arte de Destaque</span>
+              <strong>Raios Encadeados &amp; Égide</strong>
+            </div>
+            <ul class="class-tags"><li>Runas</li><li>Elementos</li><li>Barreiras</li></ul>
+          </article>
+
+          <article class="class-card class-hunter reveal">
+            <div class="class-card-top">
+              <div class="class-emblem" aria-hidden="true">
+                <span class="rune-ring"></span>
+                <svg viewBox="0 0 32 32"><path d="M8 3 C 18 8 18 24 8 29 L 9.5 30.5 C 21 25 21 7 9.5 1.5 Z" fill="currentColor"/><rect x="6" y="15" width="22" height="2.4" rx="1.2" fill="currentColor"/><path d="M30 16.2 L 25 12.5 L 25 19.9 Z" fill="currentColor"/></svg>
+              </div>
+              <span class="class-role">Precisão &bull; Domador</span>
+            </div>
+            <h3>Caçador</h3>
+            <p>Conhece cada trilha da mata. Arco longo, armadilhas e companheiros animais leais.</p>
+            <div class="class-signature">
+              <span class="sig-label">Arte de Destaque</span>
+              <strong>Flecha Silvestre &amp; Vínculo</strong>
+            </div>
+            <ul class="class-tags"><li>Arco</li><li>Rastros</li><li>Mascotes</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== STUDIO ===================== -->
+    <section class="section section-studio" id="estudio" aria-labelledby="estudio-title">
+      <canvas class="fireflies" data-count="26" aria-hidden="true"></canvas>
+      <div class="container studio-grid">
+        <div class="studio-art reveal">
+          <svg class="sleepy-capy" viewBox="0 0 440 280" role="img" aria-label="Capivara dormindo em um ninho de palha">
+            <g class="breathe">
+              <path d="M70 232 C 56 170 104 118 200 116 C 252 115 285 126 305 142 L 312 232 Z" fill="#a8622f"/>
+              <ellipse cx="140" cy="186" rx="60" ry="42" fill="#b5703a"/>
+              <path d="M118 160 q 10 -8 20 0 M200 132 q 10 -7 20 0 M98 196 q 8 -6 16 0" fill="none" stroke="#7f4520" stroke-width="3.5" stroke-linecap="round"/>
+              <path d="M268 150 C 268 122 298 110 336 112 C 378 114 404 132 406 160 C 408 194 388 216 346 218 L 276 218 C 268 196 268 172 268 150 Z" fill="#c98a4b"/>
+              <circle cx="300" cy="118" r="16" fill="#8a5530"/>
+              <circle cx="301" cy="120" r="9" fill="#e8a191"/>
+              <path d="M334 182 C 334 166 356 160 378 162 C 398 164 410 176 408 192 C 406 210 388 220 362 219 C 344 218 334 202 334 182 Z" fill="#ecc48e"/>
+              <ellipse cx="340" cy="190" rx="13" ry="7" fill="#f2a48f" opacity="0.85"/>
+              <path d="M332 150 q 12 10 24 0" fill="none" stroke="#2a160d" stroke-width="4.5" stroke-linecap="round"/>
+              <path d="M352 196 q 18 10 36 -4" fill="none" stroke="#2a160d" stroke-width="4.5" stroke-linecap="round"/>
+              <ellipse cx="398" cy="152" rx="10" ry="12" fill="#3b1d12"/>
+              <circle cx="395" cy="147" r="3" fill="#ffffff" opacity="0.5"/>
+            </g>
+            <g fill="none" stroke-linecap="round">
+              <path d="M40 236 C 120 226 200 244 280 232 S 380 228 420 236" stroke="#c9a35a" stroke-width="6"/>
+              <path d="M60 246 C 150 236 230 252 310 240 S 390 238 410 244" stroke="#b08a45" stroke-width="5"/>
+              <path d="M60 222 L 90 240 M110 214 L 120 236 M380 214 L 360 236 M400 226 L 372 240 M30 230 L 70 238" stroke="#c9a35a" stroke-width="4"/>
+            </g>
+            <g class="zzz" fill="#d9d2bf" font-family="'Lilita One', sans-serif">
+              <text class="z z1" x="352" y="92" font-size="30">z</text>
+              <text class="z z2" x="380" y="70" font-size="24">z</text>
+              <text class="z z3" x="404" y="52" font-size="18">z</text>
+            </g>
+          </svg>
+          <div class="studio-wordmark">
+            <span class="wm-kapi">KAPI</span>
+            <span class="wm-studios">STUDIOS</span>
+          </div>
+        </div>
+
+        <div class="studio-copy reveal reveal-delay">
+          <span class="eyebrow">
+            <img src="assets/developer-logo-araucaria-k.svg" alt="" width="18" height="18" />
+            O estúdio
+          </span>
+          <h2 class="section-title" id="estudio-title">Feito com calma, como uma capivara à beira do rio</h2>
+          <p class="section-lead">
+            Somos um pequeno estúdio brasileiro que acredita em jogos feitos com carinho e sem pressa. Nossa inspiração vem das matas, das águas e das histórias que ouvimos desde criança.
+          </p>
+          <p class="section-lead">
+            <strong>2D MMORPG</strong> é o primeiro mundo que estamos construindo, e cada atualização nasce ouvindo quem caminha por ele. Venha sentar à margem do rio com a gente.
+          </p>
+          <div class="hero-cta">
+            <a href="https://mmorpg.kich.dev.br" target="_blank" rel="noopener" class="btn btn-orange btn-lg" id="studio-play-btn">Entrar no mundo</a>
+            <a href="https://kich.dev.br" target="_blank" rel="noopener" class="btn btn-ghost btn-lg" id="studio-portal-btn">Outros jogos</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <svg class="footer-grass" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 60 L0 34 L18 20 L26 36 L40 12 L52 34 L66 22 L76 38 L92 8 L104 34 L118 24 L128 40 L146 16 L158 36 L172 26 L184 40 L200 10 L212 34 L228 22 L238 38 L256 14 L268 36 L282 24 L294 40 L312 6 L324 34 L338 22 L350 38 L366 16 L378 36 L392 26 L404 40 L422 12 L434 34 L448 20 L460 38 L476 10 L488 36 L502 24 L514 40 L532 14 L544 34 L558 22 L570 38 L588 8 L600 34 L614 24 L626 40 L642 16 L654 36 L668 26 L680 40 L698 10 L710 34 L724 22 L736 38 L752 14 L764 36 L778 24 L790 40 L808 6 L820 34 L834 22 L846 38 L862 16 L874 36 L888 26 L900 40 L918 12 L930 34 L944 20 L956 38 L972 10 L984 36 L998 24 L1010 40 L1028 14 L1040 34 L1054 22 L1066 38 L1084 8 L1096 34 L1110 24 L1122 40 L1138 16 L1150 36 L1164 26 L1176 40 L1194 10 L1206 34 L1220 22 L1232 38 L1248 14 L1260 36 L1274 24 L1286 40 L1304 6 L1316 34 L1330 22 L1342 38 L1358 16 L1370 36 L1384 26 L1396 40 L1414 12 L1426 34 L1440 22 L1440 60 Z" fill="#08140f"/>
+    </svg>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#topo" class="brand" aria-label="Kapi Studios - voltar ao topo">
+          <img src="assets/kapi-mark.svg" alt="" width="46" height="37" class="brand-mark" />
+          <span class="brand-text">
+            <span class="brand-kapi">KAPI</span>
+            <span class="brand-studios">STUDIOS</span>
+          </span>
+        </a>
+        <p>Jogos feitos à sombra das árvores, ao som do rio.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Jogo</h4>
+        <ul>
+          <li><a href="https://mmorpg.kich.dev.br" target="_blank" rel="noopener">Jogar 2D MMORPG</a></li>
+          <li><a href="#mundo">O Mundo</a></li>
+          <li><a href="#classes">Classes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Estúdio</h4>
+        <ul>
+          <li><a href="#estudio">Sobre nós</a></li>
+          <li><a href="https://kich.dev.br" target="_blank" rel="noopener">Portal kich.dev.br</a></li>
+          <li><a href="https://github.com/tavmata" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Kapi Studios. Feito no Brasil por Otavio Kich.</p>
+    </div>
+  </footer>
+
+  <!-- ===================== TRAILER MODAL ===================== -->
+  <div class="trailer-modal" id="trailer-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Trailer de 2D MMORPG">
+    <div class="trailer-backdrop" id="trailer-backdrop"></div>
+    <div class="trailer-dialog">
+      <button type="button" class="trailer-close" id="trailer-close" aria-label="Fechar vídeo">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M18 6 L6 18 M6 6 L18 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="trailer-video">
+        <video id="modal-video" controls playsinline preload="none">
+          <source src="assets/mmorpg-preview.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="trailer-footer">
+        <span><strong>2D MMORPG</strong> &bull; Gameplay &amp; Trailer</span>
+        <a href="https://mmorpg.kich.dev.br" target="_blank" rel="noopener" class="btn btn-orange btn-sm" id="modal-play-btn">Jogar agora</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

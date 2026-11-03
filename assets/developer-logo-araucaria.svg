@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <!-- Madeira de Imbuia / Tronco -->
+    <linearGradient id="woodTrunk" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#6c3b24"/>
+      <stop offset="50%" stop-color="#4a2514"/>
+      <stop offset="100%" stop-color="#2c140a"/>
+    </linearGradient>
+
+    <!-- Casca de Pinhão (Castanho Quente & Terracota) -->
+    <linearGradient id="pinhaoShell" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9a3412"/>
+      <stop offset="40%" stop-color="#7c2d12"/>
+      <stop offset="100%" stop-color="#431407"/>
+    </linearGradient>
+
+    <!-- Folhagem Verde Musgo / Mata de Araucárias (Sem neon, fosco e profundo) -->
+    <linearGradient id="mossGreenDeep" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3d6f43"/>
+      <stop offset="45%" stop-color="#244d2b"/>
+      <stop offset="100%" stop-color="#142f1a"/>
+    </linearGradient>
+
+    <linearGradient id="mossGreenLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#588d5e"/>
+      <stop offset="60%" stop-color="#3d6f43"/>
+      <stop offset="100%" stop-color="#244d2b"/>
+    </linearGradient>
+
+    <!-- Bronze Rústico / Ouro Velho -->
+    <linearGradient id="oldBronze" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4a34b"/>
+      <stop offset="50%" stop-color="#a16e28"/>
+      <stop offset="100%" stop-color="#5c3c12"/>
+    </linearGradient>
+
+    <!-- Sombra de Contato Suave -->
+    <radialGradient id="baseGround" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(15, 23, 42, 0.6)"/>
+      <stop offset="100%" stop-color="rgba(15, 23, 42, 0)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Sombra no Solo -->
+  <ellipse cx="60" cy="111" rx="34" ry="5" fill="url(#baseGround)"/>
+
+  <g id="brasao-araucaria-pinhao">
+    <!-- 1. Silhueta do Brasão Escudo / Semente de Pinhão de Fundo -->
+    <!-- Contorno externo esculpido em madeira escura e bronze -->
+    <path d="M 60 14 C 78 14 96 26 96 52 C 96 78 74 98 60 108 C 46 98 24 78 24 52 C 24 26 42 14 60 14 Z" 
+          fill="url(#woodTrunk)"/>
+
+    <!-- Friso Interno em Bronze Rústico -->
+    <path d="M 60 17 C 76 17 92 28 92 52 C 92 75 72 94 60 103 C 48 94 28 75 28 52 C 28 28 44 17 60 17 Z" 
+          fill="none" stroke="url(#oldBronze)" stroke-width="1.8"/>
+
+    <!-- Fundo Interno: Painel Verde Musgo da Floresta Nativa -->
+    <path d="M 60 20 C 74 20 88 30 88 52 C 88 73 70 91 60 99 C 50 91 32 73 32 52 C 32 30 46 20 60 20 Z" 
+          fill="url(#mossGreenDeep)"/>
+
+    <!-- 2. Coração do Pinhão (Forma Central da Semente) -->
+    <path d="M 60 38 C 69 38 74 54 74 68 C 74 81 65 91 60 96 C 55 91 46 81 46 68 C 46 54 51 38 60 38 Z" 
+          fill="url(#pinhaoShell)"/>
+
+    <!-- Polpa Clara / Ouro Velho da Semente do Pinhão -->
+    <path d="M 60 42 C 66 42 70 54 70 66 C 70 77 63 85 60 89 C 57 85 50 77 50 66 C 50 54 54 42 60 42 Z" 
+          fill="#d97706" opacity="0.85"/>
+    <path d="M 60 44 C 64 44 67 53 67 64 C 67 73 62 80 60 84 C 58 80 53 73 53 64 C 53 53 56 44 60 44 Z" 
+          fill="#fef08a" opacity="0.9"/>
+
+    <!-- 3. A Araucária Sobreposta ao Brasão (Tronco e Galhos em Candelabro) -->
+    <!-- Tronco Central Maciço em Madeira Entalhada -->
+    <path d="M 58 98 L 58.5 24 L 61.5 24 L 62 98 Z" fill="url(#woodTrunk)"/>
+    <line x1="60" y1="24" x2="60" y2="98" stroke="#1c0b05" stroke-width="0.9" opacity="0.7"/>
+
+    <!-- Nível Inferior de Galhos em Candelabro (Curva para baixo e sobe com vigor) -->
+    <!-- Braço Esquerdo -->
+    <path d="M 58.5 68 C 44 68 36 58 35 44" fill="none" stroke="url(#woodTrunk)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 35 44 C 34.5 38 36 33 38 28" fill="none" stroke="url(#woodTrunk)" stroke-width="2.4" stroke-linecap="round"/>
+    <!-- Ramificação secundária -->
+    <path d="M 46 62 C 43 55 43 47 45 40" fill="none" stroke="url(#woodTrunk)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Braço Direito -->
+    <path d="M 61.5 68 C 76 68 84 58 85 44" fill="none" stroke="url(#woodTrunk)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 85 44 C 85.5 38 84 33 82 28" fill="none" stroke="url(#woodTrunk)" stroke-width="2.4" stroke-linecap="round"/>
+    <!-- Ramificação secundária -->
+    <path d="M 74 62 C 77 55 77 47 75 40" fill="none" stroke="url(#woodTrunk)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Nível Superior de Galhos (Sustentação da Taça) -->
+    <path d="M 58.5 48 C 48 48 44 40 44 28" fill="none" stroke="url(#woodTrunk)" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M 61.5 48 C 72 48 76 40 76 28" fill="none" stroke="url(#woodTrunk)" stroke-width="2.4" stroke-linecap="round"/>
+
+    <!-- Estrutura da Copa / Topo Saucer -->
+    <path d="M 59 30 C 53 26 51 20 52 14" fill="none" stroke="url(#woodTrunk)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 61 30 C 67 26 69 20 68 14" fill="none" stroke="url(#woodTrunk)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- 4. Rosetas de Folhagem (Acículas Verdes e Pinhões) -->
+    <!-- Pontas dos Galhos Inferiores -->
+    <circle cx="38" cy="28" r="4.2" fill="url(#mossGreenDeep)"/>
+    <circle cx="37" cy="27" r="2.8" fill="url(#mossGreenLight)"/>
+    <circle cx="45" cy="39" r="3.6" fill="url(#mossGreenDeep)"/>
+    <circle cx="44.5" cy="38.5" r="2.2" fill="url(#mossGreenLight)"/>
+
+    <circle cx="82" cy="28" r="4.2" fill="url(#mossGreenDeep)"/>
+    <circle cx="81" cy="27" r="2.8" fill="url(#mossGreenLight)"/>
+    <circle cx="75" cy="39" r="3.6" fill="url(#mossGreenDeep)"/>
+    <circle cx="74.5" cy="38.5" r="2.2" fill="url(#mossGreenLight)"/>
+
+    <!-- Pontas dos Galhos Médios -->
+    <circle cx="44" cy="27" r="4.4" fill="url(#mossGreenDeep)"/>
+    <circle cx="43" cy="26" r="2.8" fill="url(#mossGreenLight)"/>
+    <circle cx="76" cy="27" r="4.4" fill="url(#mossGreenDeep)"/>
+    <circle cx="75" cy="26" r="2.8" fill="url(#mossGreenLight)"/>
+
+    <!-- Copa Superior em Taça (Plana/Saucer Característica) -->
+    <path d="M 40 16 C 46 11 74 11 80 16 C 76 20 44 20 40 16 Z" fill="url(#mossGreenDeep)"/>
+    <path d="M 43 14 C 48 10 72 10 77 14 C 73 17 47 17 43 14 Z" fill="url(#mossGreenLight)"/>
+
+    <!-- Nódulos Centrais da Copa -->
+    <circle cx="52" cy="13" r="3.8" fill="url(#mossGreenDeep)"/>
+    <circle cx="51.5" cy="12.5" r="2.4" fill="url(#mossGreenLight)"/>
+
+    <circle cx="68" cy="13" r="3.8" fill="url(#mossGreenDeep)"/>
+    <circle cx="67.5" cy="12.5" r="2.4" fill="url(#mossGreenLight)"/>
+
+    <circle cx="60" cy="11" r="4.2" fill="url(#mossGreenDeep)"/>
+    <circle cx="59.5" cy="10.5" r="2.8" fill="url(#mossGreenLight)"/>
+
+    <!-- Detalhes de Rebites de Bronze no Escudo (Toque Clássico Medieval-Brasileiro) -->
+    <circle cx="60" cy="18" r="1.4" fill="#fef08a" stroke="#78350f" stroke-width="0.6"/>
+    <circle cx="36" cy="32" r="1.2" fill="#d4a34b" stroke="#451a03" stroke-width="0.5"/>
+    <circle cx="84" cy="32" r="1.2" fill="#d4a34b" stroke="#451a03" stroke-width="0.5"/>
+    <circle cx="60" cy="104" r="1.4" fill="#fef08a" stroke="#78350f" stroke-width="0.6"/>
+  </g>
+</svg>
