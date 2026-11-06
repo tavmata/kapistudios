@@ -14,6 +14,8 @@ Site oficial do **Kapi Studios** — estúdio independente de desenvolvimento de
 kapistudios/
 ├── assets/
 │   ├── developer-logo-*.svg    # Variações e marcas de estúdio
+│   ├── game/                   # Captura real da Ilha de Areia (WebP)
+│   ├── js/                     # Renderizadores procedurais em Canvas (monstros e personagens)
 │   ├── kapi-mark.svg           # Marca da capivara
 │   ├── kapi-studios-logo.svg   # Logotipo completo
 │   └── mmorpg-preview.mp4      # Vídeo de demonstração do 2D MMORPG
@@ -47,3 +49,14 @@ Acesse em: `http://localhost:8000`
 Este repositório foi estruturado para ser servido diretamente pelo **GitHub Pages**:
 - Os caminhos de arquivos (`assets/`, `style.css`, `main.js`) são relativos, funcionando perfeitamente em subdiretórios (`https://tavmata.github.io/kapistudios/`) ou em domínios personalizados (`CNAME`).
 
+## Publicação no domínio próprio
+
+A versão aprovada no Figma foi importada de `E:\kapicode` para esta pasta. O site público é https://kapistudios.kich.dev.br/ (com **s**).
+
+No projeto `2mmorpgexport`, `deploy.ps1` inclui `kapistudios/` no pacote e copia os arquivos para `/var/www/kapistudios` no servidor Oracle. Esse comando também atualiza e reinicia o MMORPG; para publicar somente a página, envie apenas `index.html`, `main.js`, `style.css` e `assets/` para essa pasta do servidor. Preserve permissões de leitura web: diretórios 755 e arquivos 644. Faça backup antes de substituir uma versão.
+
+Os GitHub Actions atuais não publicam esse domínio: `sync-satellites.yml` sincroniza o repositório `tavmata/kapistudios`, e `main_2mmorpg-crude.yml` publica uma aplicação no Azure. Um push isolado não equivale à publicação no servidor Oracle.
+
+O HTML desta publicação usa identificadores de conteúdo nas URLs de `style.css` e `main.js` para evitar o cache de sete dias da versão anterior. Ao atualizar esses arquivos no futuro, atualize também suas versões no HTML.
+
+Origem visual: https://www.figma.com/design/Wz7BVZUoUiZyv2s5Gm6thD/Kapi?node-id=0-1&code-node-id=1-3
