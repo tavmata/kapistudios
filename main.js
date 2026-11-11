@@ -1,5 +1,6 @@
 /**
- * Kapi Studios — interaction layer + live procedural monster & character engines
+ * Kapi Studios — interaction layer, storm effects (lightning, loot chests) and the live
+ * procedural monster and character engines
  */
 import {
   createMonster,
@@ -51,24 +52,33 @@ import {
   // 1. Page-load curtain
   // -------------------------------------------------------------------------
   const loaderCount = document.querySelector('.loader-count');
-  function finishLoading() { body.classList.add('is-loaded'); }
+  const loaderBar = document.querySelector('.loader-bar i');
+  const loadedQueue = [];
+  let isLoaded = false;
+  function finishLoading() {
+    body.classList.add('is-loaded');
+    isLoaded = true;
+    loadedQueue.splice(0).forEach((fn) => fn());
+  }
+  function whenLoaded(fn) { if (isLoaded) fn(); else loadedQueue.push(fn); }
 
   if (reduced) {
     finishLoading();
   } else {
     const start = performance.now();
-    const duration = 1100;
+    const duration = 650;
     const fontsReady = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
     let fontsDone = false;
     fontsReady.then(() => { fontsDone = true; });
-    setTimeout(() => { fontsDone = true; }, 2200);
+    setTimeout(() => { fontsDone = true; }, 1800);
 
     (function count(now) {
       const t = clamp((now - start) / duration, 0, 1);
       const eased = 1 - Math.pow(1 - t, 3);
       if (loaderCount) loaderCount.textContent = String(Math.round(eased * 100));
+      if (loaderBar) loaderBar.style.setProperty('--p', eased.toFixed(3));
       if (t < 1 || !fontsDone) requestAnimationFrame(count);
-      else setTimeout(finishLoading, 120);
+      else setTimeout(finishLoading, 80);
     })(start);
   }
 
@@ -101,7 +111,7 @@ import {
     const ring = cursor.querySelector('.cursor-ring');
     const label = cursor.querySelector('.cursor-label');
     const ringSpring = createSpring(0.16, 0.7);
-    const labels = { play: 'assistir', pet: 'carinho' };
+    const labels = { play: 'assistir', open: 'abrir' };
     ringSpring.x = ringSpring.tx = pointer.x;
     ringSpring.y = ringSpring.ty = pointer.y;
 
@@ -136,7 +146,7 @@ import {
     document.querySelectorAll('.magnetic').forEach((el) => {
       const s = createSpring(0.14, 0.68);
       let active = false;
-      const pull = el.classList.contains('footer-orb') ? 0.42 : 0.3;
+      const pull = 0.3;
 
       function tick() {
         s.step();
@@ -266,7 +276,6 @@ import {
   const depthLayers = Array.from(document.querySelectorAll('.hero [data-depth]')).map((el) => ({
     el, depth: parseFloat(el.dataset.depth) || 1, s: createSpring(0.06, 0.82),
   }));
-  const plateImg = document.querySelector('.plate-photo img');
   const hero = document.querySelector('.hero');
   const marquee = document.querySelector('.marquee');
   const skew = createSpring(0.1, 0.75);
@@ -282,7 +291,6 @@ import {
           l.s.step();
           l.el.style.transform = `translate3d(${l.s.x.toFixed(2)}px, ${l.s.y.toFixed(2)}px, 0)`;
         });
-        if (plateImg) plateImg.style.setProperty('--plate-shift', `${(window.scrollY * -0.08).toFixed(1)}px`);
       }
 
       if (marquee) {
@@ -414,40 +422,15 @@ import {
   });
 
   // -------------------------------------------------------------------------
-  // 11. The capybara likes attention
-  // -------------------------------------------------------------------------
-  const capyPet = document.getElementById('capy-pet');
-  const capyTooltip = document.getElementById('capy-tooltip');
-  const cozy = ['ai, que delícia...', 'mais um pouquinho?', 'tô pronta pra aventura!', 'nhac! folha fresquinha.', 'agora a barriga, por favor.'];
-  let cozyIndex = 0;
-  let petTimer;
-  function pet() {
-    if (!capyPet) return;
-    capyPet.classList.remove('is-petted');
-    void capyPet.offsetWidth;
-    capyPet.classList.add('is-petted');
-    if (capyTooltip) capyTooltip.textContent = cozy[cozyIndex++ % cozy.length];
-    clearTimeout(petTimer);
-    petTimer = setTimeout(() => capyPet.classList.remove('is-petted'), 1800);
-  }
-  if (capyPet) {
-    capyPet.addEventListener('click', pet);
-    capyPet.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pet(); }
-    });
-  }
-
-  // -------------------------------------------------------------------------
   // 12. Living clock (Brasília time, with a mood)
   // -------------------------------------------------------------------------
   const clockTime = document.getElementById('clock-time');
   const clockMood = document.getElementById('clock-mood');
   function moodFor(h) {
-    if (h < 5) return 'a capivara tá dormindo';
-    if (h < 9) return 'a névoa ainda não subiu';
-    if (h < 17) return 'sol na clareira';
-    if (h < 19) return 'hora dourada no rio';
-    return 'os vaga-lumes já saíram';
+    if (h < 5) return 'madrugada de farm';
+    if (h < 12) return 'manhã de missão';
+    if (h < 18) return 'tarde de masmorra';
+    return 'noite de chefe';
   }
   function tickClock() {
     if (!clockTime) return;
@@ -466,9 +449,9 @@ import {
   setInterval(tickClock, 30000);
 
   // -------------------------------------------------------------------------
-  // 13. Fireflies (warm, gentle, paused off-screen)
+  // 13. Storm sparks (charged motes rising, paused off-screen)
   // -------------------------------------------------------------------------
-  document.querySelectorAll('.fireflies').forEach((canvas) => {
+  document.querySelectorAll('.sparks').forEach((canvas) => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -485,16 +468,16 @@ import {
     resize();
     window.addEventListener('resize', resize, { passive: true });
 
-    const palette = [[232, 207, 122], [224, 169, 120], [190, 200, 140]];
+    const palette = [[255, 214, 10], [76, 201, 255], [190, 215, 255], [76, 201, 255]];
     const flies = Array.from({ length: parseInt(canvas.dataset.count || '24', 10) }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
-      r: Math.random() * 1.6 + 0.8,
+      r: Math.random() * 1.3 + 0.6,
       c: palette[Math.floor(Math.random() * palette.length)],
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: -Math.random() * 0.25 - 0.05,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: -Math.random() * 0.7 - 0.2,
       p: Math.random() * Math.PI * 2,
-      ps: Math.random() * 0.02 + 0.01,
+      ps: Math.random() * 0.05 + 0.02,
       a: Math.random() * 0.6 + 0.3,
     }));
 
@@ -522,7 +505,7 @@ import {
         ctx.beginPath();
         ctx.arc(f.x, f.y, f.r * 7, 0, Math.PI * 2);
         ctx.fill();
-        ctx.fillStyle = `rgba(250, 240, 210, ${alpha})`;
+        ctx.fillStyle = `rgba(245, 250, 255, ${alpha})`;
         ctx.beginPath();
         ctx.arc(f.x, f.y, f.r * 0.6, 0, Math.PI * 2);
         ctx.fill();
@@ -904,5 +887,474 @@ import {
       lastOrientation = o;
       sceneVideos.forEach((v) => { if (v.dataset.src) load(v); });
     }, { passive: true });
+  }
+
+  // -------------------------------------------------------------------------
+  // 17. Storm: lightning, loot bursts and sparks on one overlay canvas
+  // -------------------------------------------------------------------------
+  // Everything is drawn on #fx, fixed above the page. Bolts and loot keep page
+  // coordinates (they scroll with the content); orbs flying to the header meter
+  // keep viewport coordinates. The loop only runs while something is alive.
+  const RARITY_RGB = {
+    common: '148,163,184',
+    uncommon: '34,197,94',
+    rare: '59,130,246',
+    epic: '168,85,247',
+    legendary: '245,158,11',
+    mythic: '239,68,68',
+  };
+  const ARC_RGB = '120,200,255';
+  const VOLT_RGB = '255,214,10';
+  const rand = (a, b) => a + Math.random() * (b - a);
+
+  const fx = (function createFx() {
+    const canvas = document.getElementById('fx');
+    const ctx = canvas && canvas.getContext('2d');
+    if (!ctx || reduced) {
+      const off = () => {};
+      return { enabled: false, bolt: off, sparks: off, burst: off, orbs: off };
+    }
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let w = 0;
+    let h = 0;
+    function resize() {
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    const bolts = [];
+    const parts = [];
+    let last = 0;
+    let running = false;
+
+    // Midpoint displacement: split every segment and push the midpoint sideways.
+    function jagged(x1, y1, x2, y2, rough) {
+      let pts = [[x1, y1], [x2, y2]];
+      let d = Math.hypot(x2 - x1, y2 - y1) * rough;
+      for (let i = 0; i < 6; i++) {
+        const next = [pts[0]];
+        for (let j = 1; j < pts.length; j++) {
+          const a = pts[j - 1];
+          const b = pts[j];
+          const nx = -(b[1] - a[1]);
+          const ny = b[0] - a[0];
+          const len = Math.hypot(nx, ny) || 1;
+          const o = (Math.random() - 0.5) * d;
+          next.push([(a[0] + b[0]) / 2 + (nx / len) * o, (a[1] + b[1]) / 2 + (ny / len) * o], b);
+        }
+        pts = next;
+        d *= 0.52;
+      }
+      return pts;
+    }
+
+    function start() {
+      if (running) return;
+      running = true;
+      last = performance.now();
+      tickers.add(frame);
+    }
+
+    function bolt(x1, y1, x2, y2, o) {
+      const opts = o || {};
+      const width = opts.width || 3;
+      const main = jagged(x1, y1, x2, y2, opts.rough || 0.26);
+      const paths = [{ pts: main, w: width }];
+      const branches = opts.branches == null ? 3 : opts.branches;
+      const span = Math.hypot(x2 - x1, y2 - y1);
+      const heading = Math.atan2(y2 - y1, x2 - x1);
+      for (let i = 0; i < branches; i++) {
+        const p = main[Math.floor(main.length * rand(0.15, 0.75))];
+        const a = heading + rand(-0.9, 0.9);
+        const len = span * rand(0.14, 0.4);
+        paths.push({ pts: jagged(p[0], p[1], p[0] + Math.cos(a) * len, p[1] + Math.sin(a) * len, 0.34), w: width * 0.45 });
+      }
+      bolts.push({
+        paths, t: 0, life: opts.life || 0.36, rgb: opts.rgb || ARC_RGB,
+        flash: opts.flash == null ? 0.14 : opts.flash, fxp: x2, fyp: y2, sy: window.scrollY,
+      });
+      start();
+    }
+
+    function sparks(x, y, n, rgb, power) {
+      const p = power || 1;
+      for (let i = 0; i < n; i++) {
+        const a = rand(0, Math.PI * 2);
+        const v = rand(120, 520) * p;
+        parts.push({
+          type: 'spark', x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 80 * p, g: 700,
+          t: 0, life: rand(0.25, 0.6), size: rand(1.2, 2.6), rgb: Math.random() < 0.4 ? '255,255,255' : (rgb || VOLT_RGB),
+          sy: window.scrollY,
+        });
+      }
+      start();
+    }
+
+    // Coins, gems and sparks thrown out of a chest.
+    function burst(x, y, rgb, scale) {
+      const s = scale || 1;
+      sparks(x, y, Math.round(18 * s), rgb, 1.1);
+      for (let i = 0; i < Math.round(13 * s); i++) {
+        const a = rand(-Math.PI * 0.86, -Math.PI * 0.14);
+        const v = rand(320, 760);
+        parts.push({
+          type: 'coin', x: x + rand(-14, 14), y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, g: 1500,
+          t: 0, life: rand(0.9, 1.5), size: rand(4, 6.5), rot: rand(0, 6), vr: rand(8, 18), sy: window.scrollY,
+        });
+      }
+      for (let i = 0; i < Math.round(6 * s); i++) {
+        const a = rand(-Math.PI * 0.8, -Math.PI * 0.2);
+        const v = rand(280, 640);
+        parts.push({
+          type: 'gem', x: x + rand(-10, 10), y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, g: 1300,
+          t: 0, life: rand(1, 1.5), size: rand(6, 9), rot: rand(0, 6), vr: rand(-6, 6), rgb, sy: window.scrollY,
+        });
+      }
+      start();
+    }
+
+    // Glowing orbs that leave the chest and home in on a target element.
+    function orbs(x, y, rgb, target, onArrive) {
+      let arrived = false;
+      for (let i = 0; i < 9; i++) {
+        const a = rand(-Math.PI, 0);
+        const v = rand(180, 420);
+        parts.push({
+          type: 'orb', x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, t: 0,
+          hold: rand(0.22, 0.4), life: rand(0.85, 1.15), size: rand(3, 5), rgb, target, fixed: true,
+          done() { if (!arrived) { arrived = true; if (onArrive) onArrive(); } },
+        });
+      }
+      start();
+    }
+
+    function drawBolt(b, dy) {
+      const k = 1 - b.t / b.life;
+      const a = k * (b.t < b.life * 0.5 ? rand(0.55, 1) : 1);
+      if (b.flash) {
+        const r = Math.max(w, h) * 0.55;
+        const g = ctx.createRadialGradient(b.fxp, b.fyp + dy, 0, b.fxp, b.fyp + dy, r);
+        g.addColorStop(0, `rgba(190,225,255,${b.flash * k * k})`);
+        g.addColorStop(1, 'rgba(190,225,255,0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, w, h);
+      }
+      b.paths.forEach((p) => {
+        ctx.beginPath();
+        p.pts.forEach((pt, i) => { if (i) ctx.lineTo(pt[0], pt[1] + dy); else ctx.moveTo(pt[0], pt[1] + dy); });
+        ctx.strokeStyle = `rgba(${b.rgb},${a * 0.22})`;
+        ctx.lineWidth = p.w * 6;
+        ctx.stroke();
+        ctx.strokeStyle = `rgba(${b.rgb},${a * 0.6})`;
+        ctx.lineWidth = p.w * 2.4;
+        ctx.stroke();
+        ctx.strokeStyle = `rgba(255,255,255,${a})`;
+        ctx.lineWidth = p.w;
+        ctx.stroke();
+      });
+    }
+
+    function drawPart(p, dy) {
+      const k = 1 - p.t / p.life;
+      const y = p.y + dy;
+      if (p.type === 'spark') {
+        ctx.strokeStyle = `rgba(${p.rgb},${k})`;
+        ctx.lineWidth = p.size;
+        ctx.beginPath();
+        ctx.moveTo(p.x, y);
+        ctx.lineTo(p.x - p.vx * 0.035, y - p.vy * 0.035);
+        ctx.stroke();
+      } else if (p.type === 'coin') {
+        const alpha = Math.min(1, k * 3);
+        const rx = Math.max(0.8, Math.abs(Math.cos(p.rot)) * p.size);
+        ctx.fillStyle = `rgba(245,158,11,${alpha})`;
+        ctx.beginPath();
+        ctx.ellipse(p.x, y, rx, p.size, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = `rgba(255,236,120,${alpha})`;
+        ctx.beginPath();
+        ctx.ellipse(p.x, y - p.size * 0.12, rx * 0.68, p.size * 0.68, 0, 0, Math.PI * 2);
+        ctx.fill();
+      } else if (p.type === 'gem') {
+        const alpha = Math.min(1, k * 3);
+        ctx.save();
+        ctx.translate(p.x, y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = `rgba(${p.rgb},${alpha})`;
+        ctx.beginPath();
+        ctx.moveTo(0, -p.size);
+        ctx.lineTo(p.size * 0.72, 0);
+        ctx.lineTo(0, p.size);
+        ctx.lineTo(-p.size * 0.72, 0);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = `rgba(255,255,255,${alpha * 0.6})`;
+        ctx.beginPath();
+        ctx.moveTo(0, -p.size);
+        ctx.lineTo(p.size * 0.72, 0);
+        ctx.lineTo(0, 0);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      } else {
+        const r = p.size * 4;
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r);
+        g.addColorStop(0, 'rgba(255,255,255,0.95)');
+        g.addColorStop(0.25, `rgba(${p.rgb},0.85)`);
+        g.addColorStop(1, `rgba(${p.rgb},0)`);
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function frame() {
+      const now = performance.now();
+      const dt = Math.min(0.05, (now - last) / 1000);
+      last = now;
+      ctx.clearRect(0, 0, w, h);
+      ctx.lineJoin = 'round';
+      ctx.lineCap = 'round';
+      ctx.globalCompositeOperation = 'lighter';
+
+      for (let i = bolts.length - 1; i >= 0; i--) {
+        const b = bolts[i];
+        b.t += dt;
+        if (b.t >= b.life) { bolts.splice(i, 1); continue; }
+        drawBolt(b, b.sy - window.scrollY);
+      }
+
+      let targetCache = null;
+      for (let i = parts.length - 1; i >= 0; i--) {
+        const p = parts[i];
+        p.t += dt;
+        if (p.t >= p.life) {
+          if (p.done) p.done();
+          parts.splice(i, 1);
+          continue;
+        }
+        if (p.type === 'orb') {
+          if (p.t < p.hold) {
+            p.x += p.vx * dt;
+            p.y += p.vy * dt;
+            p.vx *= 0.9;
+            p.vy *= 0.9;
+            p.sx = p.x;
+            p.sy0 = p.y;
+          } else {
+            if (!targetCache) {
+              const r = p.target.getBoundingClientRect();
+              targetCache = [r.left + r.width / 2, Math.max(18, r.top + r.height / 2)];
+            }
+            const e = Math.pow((p.t - p.hold) / (p.life - p.hold), 2.2);
+            p.x = p.sx + (targetCache[0] - p.sx) * e;
+            p.y = p.sy0 + (targetCache[1] - p.sy0) * e;
+          }
+          drawPart(p, 0);
+        } else {
+          p.vy += p.g * dt;
+          p.x += p.vx * dt;
+          p.y += p.vy * dt;
+          if (p.vr) p.rot += p.vr * dt;
+          if (p.type !== 'spark') ctx.globalCompositeOperation = 'source-over';
+          drawPart(p, p.sy - window.scrollY);
+          ctx.globalCompositeOperation = 'lighter';
+        }
+      }
+
+      if (!bolts.length && !parts.length) {
+        running = false;
+        tickers.delete(frame);
+        ctx.clearRect(0, 0, w, h);
+      }
+    }
+
+    return { enabled: true, bolt, sparks, burst, orbs };
+  })();
+
+  // A bolt from the top of the screen down to a point, with sparks where it lands.
+  function strike(x, y, o) {
+    fx.bolt(x + rand(-220, 220), -30, x, y, o);
+    fx.sparks(x, y, 12, ARC_RGB);
+  }
+
+  // -------------------------------------------------------------------------
+  // 18. Loot chests: struck open as the visitor reaches them, counted in the header
+  // -------------------------------------------------------------------------
+  const meter = document.getElementById('loot-meter');
+  const meterCount = document.getElementById('meter-count');
+  const meterSegs = meter ? Array.from(meter.querySelectorAll('.meter-segs i')) : [];
+  const chests = Array.from(document.querySelectorAll('[data-chest]'));
+  const heroStage = document.querySelector('.hero-stage');
+  let opened = 0;
+
+  function shake(el) {
+    if (!el || reduced) return;
+    el.classList.remove('is-shake');
+    void el.offsetWidth;
+    el.classList.add('is-shake');
+  }
+
+  function meterAdd(rarity) {
+    const seg = meterSegs[opened];
+    opened += 1;
+    if (seg) {
+      seg.style.setProperty('--c', `rgb(${RARITY_RGB[rarity] || VOLT_RGB})`);
+      seg.classList.add('is-on');
+    }
+    if (!meter) return;
+    const total = meterSegs.length;
+    if (meterCount) meterCount.textContent = `${opened}/${total}`;
+    meter.setAttribute('aria-label', `Baús abertos: ${opened} de ${total}`);
+    meter.classList.remove('is-bump');
+    void meter.offsetWidth;
+    meter.classList.add('is-bump');
+    if (opened >= total) {
+      meter.classList.add('is-complete');
+      if (header) header.classList.add('is-charged');
+      // All found: the play button gets hit three times.
+      const play = header && header.querySelector('.btn-primary');
+      const r = (play && play.offsetParent ? play : meter).getBoundingClientRect();
+      [0, 160, 320].forEach((ms) => setTimeout(() => {
+        fx.bolt(r.left + r.width / 2 + rand(-300, 300), h0() + 40, r.left + r.width / 2, r.top + r.height / 2, { rgb: VOLT_RGB, flash: 0.08 });
+        fx.sparks(r.left + r.width / 2, r.top + r.height / 2, 16, VOLT_RGB);
+      }, ms));
+    }
+  }
+  function h0() { return window.innerHeight; }
+
+  function openChest(el, byUser) {
+    if (!el) return;
+    const rarity = el.dataset.rarity || 'legendary';
+    const rgb = RARITY_RGB[rarity] || RARITY_RGB.legendary;
+    const centre = () => {
+      const r = el.getBoundingClientRect();
+      return [r.left + r.width / 2, r.top + r.height * 0.5];
+    };
+
+    if (el.classList.contains('is-open')) {
+      // Already open: a click still pays out.
+      if (!byUser) return;
+      const [x, y] = centre();
+      el.classList.remove('is-burst');
+      void el.offsetWidth;
+      el.classList.add('is-burst');
+      fx.burst(x, y, rgb, 0.6);
+      return;
+    }
+    if (el.dataset.opening) return;
+    el.dataset.opening = '1';
+
+    const finish = () => {
+      const [x, y] = centre();
+      el.classList.add('is-open');
+      el.setAttribute('aria-label', 'Baú aberto. Clique para mais loot');
+      if (header) header.classList.remove('is-hidden');
+      fx.burst(x, y, rgb, 1);
+      if (el.closest('.hero')) shake(heroStage);
+      if (fx.enabled && meter && meter.offsetParent) fx.orbs(x, y, rgb, meter, () => meterAdd(rarity));
+      else meterAdd(rarity);
+    };
+
+    if (!fx.enabled) { finish(); return; }
+    const [x, y] = centre();
+    fx.bolt(x + rand(-260, 260), -30, x, y, { flash: 0.16, width: 3.4 });
+    setTimeout(finish, 110);
+  }
+
+  chests.forEach((el) => {
+    el.addEventListener('click', () => openChest(el, true));
+  });
+
+  whenLoaded(() => {
+    const heroChest = document.querySelector('.chest-hero');
+    const lines = Array.from(document.querySelectorAll('.hero-title .line > span'));
+
+    // Three words, three hits, then the chest.
+    if (fx.enabled && window.scrollY < window.innerHeight * 0.6) {
+      [260, 610, 960].forEach((ms, i) => setTimeout(() => {
+        const line = lines[i];
+        if (!line) return;
+        const r = line.getBoundingClientRect();
+        strike(r.left + r.width * rand(0.55, 0.95), r.top + r.height * 0.55, { flash: i === 2 ? 0.14 : 0.07, branches: 2 });
+        shake(heroStage);
+      }, ms));
+    }
+    setTimeout(() => openChest(heroChest), reduced ? 0 : 1650);
+
+    // The rest open when they scroll well into view.
+    if ('IntersectionObserver' in window) {
+      const watcher = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          watcher.unobserve(entry.target);
+          setTimeout(() => openChest(entry.target), reduced ? 0 : 320);
+        });
+      }, { threshold: 0.9, rootMargin: '0px 0px -14% 0px' });
+      chests.forEach((el) => { if (el !== heroChest) watcher.observe(el); });
+    } else {
+      chests.forEach((el) => openChest(el));
+    }
+  });
+
+  // -------------------------------------------------------------------------
+  // 19. Lightning on demand: ambient strikes over the hero, clicks, zap targets
+  // -------------------------------------------------------------------------
+  if (fx.enabled) {
+    let heroOnScreen = true;
+    if (hero && 'IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => { heroOnScreen = entries[0].isIntersecting; }, { threshold: 0.25 }).observe(hero);
+    }
+    (function ambient() {
+      setTimeout(() => {
+        if (isLoaded && heroOnScreen && !document.hidden && hero) {
+          const r = hero.getBoundingClientRect();
+          const x = r.left + r.width * rand(0.3, 0.98);
+          fx.bolt(x + rand(-160, 160), r.top - 20, x, r.top + r.height * rand(0.18, 0.55), { width: 1.8, flash: 0.05, branches: 2 });
+        }
+        ambient();
+      }, rand(3200, 7000));
+    })();
+
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (!(target instanceof Element) || target.closest('[data-chest], [data-zap]')) return;
+      if (target.closest('a, button, [role="button"], video')) {
+        fx.sparks(e.clientX, e.clientY, 10, VOLT_RGB, 0.7);
+      } else if (target.closest('.hero')) {
+        strike(e.clientX, e.clientY, { flash: 0.1 });
+      } else {
+        fx.sparks(e.clientX, e.clientY, 8, ARC_RGB, 0.6);
+      }
+    });
+
+    document.querySelectorAll('[data-zap]').forEach((el) => {
+      const zap = () => {
+        const r = el.getBoundingClientRect();
+        const x = r.left + r.width / 2;
+        const y = r.top + r.height / 2;
+        if (el.dataset.zap === 'big') {
+          for (let i = 0; i < 5; i++) {
+            const a = rand(0, Math.PI * 2);
+            const d = rand(r.width * 0.7, r.width * 1.25);
+            fx.bolt(x, y, x + Math.cos(a) * d, y + Math.sin(a) * d, { rgb: i % 2 ? ARC_RGB : VOLT_RGB, flash: i ? 0 : 0.1, branches: 2, width: 2.4 });
+          }
+          fx.sparks(x, y, 30, VOLT_RGB, 1.2);
+        } else {
+          fx.bolt(x + rand(-140, 140), Math.max(-30, r.top - 420), x, y, { rgb: VOLT_RGB, flash: 0.05, branches: 2, width: 2.2 });
+          fx.sparks(x, y, 12, VOLT_RGB, 0.8);
+        }
+      };
+      el.addEventListener('click', zap);
+      el.addEventListener('keydown', (e) => {
+        if (el.getAttribute('role') === 'button' && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); zap(); }
+      });
+    });
   }
 })();

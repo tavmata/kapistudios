@@ -1,6 +1,6 @@
 # Kapi Studios
 
-Site oficial do **Kapi Studios** — estúdio independente de desenvolvimento de jogos focado em experiências encantadoras, natureza e magia.
+Site oficial do **Kapi Studios**, estúdio brasileiro independente de jogos. O visual é o "Tempestade": noite de tempestade, amarelo elétrico, tipografia pesada e reta (sem itálico), raios e baús de loot que abrem conforme a pessoa rola a página.
 
 - **GitHub Pages:** [https://tavmata.github.io/kapistudios/](https://tavmata.github.io/kapistudios/)
 - **MMORPG:** [https://mmorpg.kich.dev.br](https://mmorpg.kich.dev.br)
@@ -16,15 +16,17 @@ kapistudios/
 │   ├── developer-logo-*.svg    # Variações e marcas de estúdio
 │   ├── game/                   # Captura real da Ilha de Areia (WebP)
 │   ├── js/                     # Renderizadores procedurais em Canvas (monstros e personagens)
-│   ├── kapi-mark.svg           # Marca da capivara
-│   ├── kapi-studios-logo.svg   # Logotipo completo
+│   ├── favicon.svg             # Ícone da aba (a marca sobre fundo escuro)
+│   ├── kapi-mark.svg           # Marca: cabeça de capivara com cicatriz de raio (fundo transparente)
+│   ├── kapi-wordmark.svg       # "KAPI" em letras próprias; o braço do K é um raio
+│   ├── kapi-studios-logo.svg   # Logotipo completo (marca + KAPI + STUDIOS), tudo em path
 │   ├── mmorpg/                 # Imagens do jogo usadas nas páginas geradas
 │   ├── site.css                # Estilo das páginas geradas (guia do jogo e blog)
 │   └── mmorpg-preview.mp4      # Vídeo de demonstração do 2D MMORPG
 │   └── video/                  # Fundos de gameplay que tocam ao rolar (bg-<clipe>-land/port.mp4 + pôster .webp)
 ├── index.html                  # Página principal (HTML semântico e acessível)
-├── style.css                   # Folha de estilos (design responsivo, paleta natural)
-├── main.js                     # Efeitos visuais, vaga-lumes e interatividade
+├── style.css                   # Folha de estilos (tokens do visual "Tempestade", responsivo)
+├── main.js                     # Raios, baús de loot, medidor de baús e os motores de monstro/personagem
 ├── nginx.conf                  # Configuração opcional para proxy reverso / servidor próprio
 └── .nojekyll                   # Garante serviço estático direto no GitHub Pages
 ```

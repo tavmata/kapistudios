@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Browser tab icon: the mark on a dark tile so it reads on light and dark tab bars. -->
+  <path fill="#0a0c18" d="M14 0 H114 L128 14 V114 L114 128 H14 L0 114 V14 Z"/>
+  <g transform="translate(13 12) scale(0.8)">
+    <path fill="#ffd60a" fill-rule="evenodd" d="M10 118 L8 72 L16 48 L24 36 L27 20 L38 14 L47 20 L51 30 L74 26 L100 30 L118 39 L124 48 L124 74 L118 87 L106 99 L78 104 L60 118 Z M68 35 L61 62 L73 62 L66 96 L92 52 L78 52 L86 35 Z"/>
+    <path fill="#f59e0b" d="M8.3 88 L67.6 88 L66 96 L70.7 88 L118 87 L106 99 L78 104 L60 118 L10 118 Z"/>
+    <path fill="#0a0c18" d="M92 40 L106 43 L102 50 L94 48 Z"/>
+    <path fill="#0a0c18" d="M117 50 L122 52 L121 58 L117 56 Z"/>
+  </g>
+</svg>

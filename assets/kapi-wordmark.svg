@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 100" width="100%" height="100%">
+  <!-- Kapi Studios wordmark: KAPI in custom upright block letters; the arm of the K is a lightning bolt. -->
+  <g fill="#f4f7ff">
+    <path d="M0 0 H26 V100 H0 Z"/>
+    <path fill-rule="evenodd" transform="translate(102 0)" d="M0 100 L32 0 H62 L94 100 H66 L60 80 H34 L28 100 Z M41 58 H53 L47 30 Z"/>
+    <path fill-rule="evenodd" transform="translate(208 0)" d="M0 0 H62 L82 16 V50 L62 66 H26 V100 H0 Z M26 22 V44 H52 L56 40 V26 L52 22 Z"/>
+    <path transform="translate(304 0)" d="M0 0 H26 V100 H0 Z"/>
+  </g>
+  <path fill="#ffd60a" d="M30 34 L60 0 H96 L62 40 H84 L98 100 L42 60 H30 Z"/>
+</svg>
