@@ -19,6 +19,7 @@ kapistudios/
 │   ├── kapi-mark.svg           # Marca da capivara
 │   ├── kapi-studios-logo.svg   # Logotipo completo
 │   └── mmorpg-preview.mp4      # Vídeo de demonstração do 2D MMORPG
+│   └── video/                  # Fundos de gameplay que tocam ao rolar (bg-<clipe>-land/port.mp4 + pôster .webp)
 ├── index.html                  # Página principal (HTML semântico e acessível)
 ├── style.css                   # Folha de estilos (design responsivo, paleta natural)
 ├── main.js                     # Efeitos visuais, vaga-lumes e interatividade
@@ -43,6 +44,12 @@ npx serve .
 Acesse em: `http://localhost:8000`
 
 ---
+
+## Vídeos de fundo
+
+Os trechos escuros da página (manifesto, índice, bestiário, trilhas e rodapé) têm gameplay em tela cheia por trás do texto. Cada vídeo só carrega quando a seção chega perto, toca enquanto está na tela e pausa quando sai; telas em pé recebem a versão retrato. Com movimento reduzido ou economia de dados, fica só o pôster.
+
+Os clipes saem das gravações limpas (sem legenda) em `marketing/crazygames/video/public/clips/`, em 1280x720 e 720x1080, sem áudio, com o fim fundido ao começo para o loop não pular. Como `*.mp4` é ignorado pelo git, os `.mp4` de `assets/video/` só existem no disco e vão para o servidor pelo `deploy.ps1`; os pôsteres `.webp` são versionados.
 
 ## Hospedagem no GitHub Pages
 

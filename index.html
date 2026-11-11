@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..800,0..100,0..1;1,9..144,300..800,0..100,0..1&family=Instrument+Sans:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=f59038c955e5" />
+  <link rel="stylesheet" href="style.css?v=56c5bd8036b6" />
   <script>
     document.documentElement.classList.add('js');
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('reduced');
@@ -251,6 +251,8 @@
 
     <!-- ===================== THE WORLD ===================== -->
     <section class="world" id="mundo" aria-labelledby="mundo-title">
+      <div class="scene scene-intro">
+      <div class="scene-bg scene-bg-left" aria-hidden="true"><div class="scene-pin"><video muted loop playsinline preload="none" poster="assets/video/bg-mount.webp" data-clip="mount"></video></div></div>
       <div class="section-label reveal"><span class="mono">01</span><span class="label-rule"></span><span class="mono">O mundo</span></div>
 
       <h2 class="visually-hidden" id="mundo-title">O mundo de 2D MMORPG</h2>
@@ -261,6 +263,7 @@
         </button>
         Siga os vaga-lumes até ruínas esquecidas, pesque na beira do rio ou junte a turma pra acordar o que dorme nas cavernas.
       </p>
+      </div>
 
       <div class="world-layout">
         <figure class="world-film reveal">
@@ -293,7 +296,8 @@
       </div>
 
       <!-- Editorial index with cursor-following previews -->
-      <div class="index">
+      <div class="index scene">
+        <div class="scene-bg" aria-hidden="true"><div class="scene-pin"><video muted loop playsinline preload="none" poster="assets/video/bg-pet.webp" data-clip="pet"></video></div></div>
         <div class="index-head reveal">
           <h2 class="display-md">Coisas que você vai <em>tropeçar</em> por lá</h2>
           <p class="mono">passe o mouse, sem compromisso</p>
@@ -349,11 +353,14 @@
     <!-- ===================== BESTIARY ===================== -->
     <section class="bestiary" id="bestiario" aria-labelledby="bestiario-title">
       <div class="bestiary-sky" aria-hidden="true"></div>
+      <div class="scene scene-bestiary">
+      <div class="scene-bg" aria-hidden="true"><div class="scene-pin"><video muted loop playsinline preload="none" poster="assets/video/bg-void.webp" data-clip="void"></video></div></div>
       <div class="section-label reveal"><span class="mono">02</span><span class="label-rule"></span><span class="mono">Bestiário</span></div>
 
       <div class="bestiary-head">
         <h2 class="display-lg reveal" id="bestiario-title">Nem tudo na mata quer <em>carinho</em>.</h2>
         <p class="bestiary-intro reveal">Goblins de olho no seu ouro, lobos que talvez virem amigos e um dragão que não liga pra nada disso. Clique nas criaturas pra ver o motor do jogo em ação.</p>
+      </div>
       </div>
 
       <figure class="field-shot reveal">
@@ -528,6 +535,7 @@
 
     <!-- ===================== CLASSES ===================== -->
     <section class="classes" id="classes" aria-labelledby="classes-title" style="--accent:#b8c4d2">
+      <div class="scene-bg scene-bg-classes" aria-hidden="true"><div class="scene-pin"><video muted loop playsinline preload="none" poster="assets/video/bg-raid.webp" data-clip="raid"></video></div></div>
       <div class="section-label reveal"><span class="mono">03</span><span class="label-rule"></span><span class="mono">As trilhas</span></div>
 
       <div class="classes-layout">
@@ -685,6 +693,7 @@
 
   <!-- ===================== FOOTER ===================== -->
   <footer class="site-footer">
+    <div class="scene-bg scene-bg-footer" aria-hidden="true"><div class="scene-pin"><video muted loop playsinline preload="none" poster="assets/video/bg-bard.webp" data-clip="bard"></video></div></div>
     <canvas class="fireflies" data-count="20" aria-hidden="true"></canvas>
     <div class="footer-top">
       <p class="footer-invite reveal">Te vejo na <em>beira do rio.</em></p>
@@ -741,6 +750,6 @@
 
   <script type="module" src="assets/js/monster-renderer.js"></script>
   <script type="module" src="assets/js/character-renderer.js"></script>
-  <script type="module" src="main.js?v=5ccb43b1e80b"></script>
+  <script type="module" src="main.js?v=9d0abf2d10c5"></script>
 </body>
 </html>

@@ -846,4 +846,63 @@ import {
     }, { threshold: 0.1 });
     ambient.forEach((v) => vo.observe(v));
   }
+
+  // Scene videos: full-bleed gameplay behind the dark stretches.
+  // Each clip loads only when its scene gets close, plays while on screen and
+  // pauses when it leaves. Tall screens get the portrait cut. Reduced motion and
+  // data saver keep the still poster.
+  const sceneVideos = Array.from(document.querySelectorAll('.scene-bg video[data-clip]'));
+  const saveData = !!(navigator.connection && navigator.connection.saveData);
+  if (sceneVideos.length && !reduced && !saveData && 'IntersectionObserver' in window) {
+    const orientation = () => (window.innerHeight > window.innerWidth * 1.1 ? 'port' : 'land');
+    const srcFor = (v) => `assets/video/bg-${v.dataset.clip}-${orientation()}.mp4`;
+    const onScreen = new Set();
+
+    const load = (v) => {
+      const src = srcFor(v);
+      if (v.dataset.src === src) return;
+      const t = v.currentTime || 0;
+      v.dataset.src = src;
+      v.src = src;
+      v.load();
+      if (t) v.addEventListener('loadedmetadata', () => { v.currentTime = t % (v.duration || 1); }, { once: true });
+      if (onScreen.has(v)) v.play().catch(() => {});
+    };
+
+    const loader = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        load(entry.target);
+        loader.unobserve(entry.target);
+      });
+    }, { rootMargin: '80% 0px' });
+
+    const player = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const v = entry.target;
+        if (entry.isIntersecting) {
+          onScreen.add(v);
+          if (!v.dataset.src) load(v);
+          v.play().catch(() => {});
+        } else {
+          onScreen.delete(v);
+          v.pause();
+        }
+      });
+    }, { threshold: 0 });
+
+    sceneVideos.forEach((v) => {
+      v.muted = true;
+      loader.observe(v);
+      player.observe(v);
+    });
+
+    let lastOrientation = orientation();
+    window.addEventListener('resize', () => {
+      const o = orientation();
+      if (o === lastOrientation) return;
+      lastOrientation = o;
+      sceneVideos.forEach((v) => { if (v.dataset.src) load(v); });
+    }, { passive: true });
+  }
 })();

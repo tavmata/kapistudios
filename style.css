@@ -911,7 +911,7 @@ em {
 .label-rule { flex: 0 0 clamp(3rem, 8vw, 7rem); height: 1px; background: var(--hairline-strong); }
 
 /* ---------- WORLD ---------- */
-.world { position: relative; padding: var(--section) var(--gutter) calc(var(--section) * 0.45); }
+.world { position: relative; isolation: isolate; padding: var(--section) var(--gutter) calc(var(--section) * 0.45); }
 
 .manifesto {
   max-width: 19ch;
@@ -1104,6 +1104,7 @@ em {
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  overflow: clip;
   padding: var(--section) var(--gutter);
   background: linear-gradient(180deg, var(--bg) 0, #0e1422 16%, #0d1220 84%, var(--bg) 100%);
 }
@@ -1490,6 +1491,8 @@ em {
     linear-gradient(180deg, transparent 0, var(--ink-950) 320px);
   transition: --accent 0.9s var(--ease-out);
   overflow: hidden;
+  overflow: clip;
+  isolation: isolate;
 }
 .classes-layout {
   display: grid;
@@ -1797,6 +1800,8 @@ em {
   padding: var(--section) var(--gutter) 0;
   background: var(--ink-950);
   overflow: hidden;
+  overflow: clip;
+  isolation: isolate;
 }
 .footer-top {
   position: relative;
@@ -1967,6 +1972,102 @@ body.is-loaded .site-header { opacity: 1; transform: none; transition: transform
 body.is-loaded .site-header.is-hidden { transform: translateY(-120%); transition-delay: 0s; }
 
 /* ---------- Responsive ---------- */
+/* ---------- Scene videos: gameplay that plays behind the dark stretches ---------- */
+.scene { position: relative; }
+.scene-bg {
+  --fade: 22vh;
+  --shade: linear-gradient(rgba(13, 16, 11, 0.6), rgba(13, 16, 11, 0.6));
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  overflow: clip;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 var(--fade), #000 calc(100% - var(--fade)), transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 var(--fade), #000 calc(100% - var(--fade)), transparent 100%);
+}
+.scene-pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.scene-pin video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.88);
+  transform-origin: 50% 40%;
+}
+.scene-pin::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 85% at 50% 50%, transparent 35%, rgba(13, 16, 11, 0.6) 100%),
+    var(--shade);
+}
+
+/* World intro: the manifesto reads from the left */
+.scene-intro .scene-bg {
+  top: calc(var(--section) * -1);
+  bottom: -16vh;
+  left: calc(var(--gutter) * -1);
+  right: calc(var(--gutter) * -1);
+}
+.scene-bg-left {
+  --shade: linear-gradient(90deg, rgba(13, 16, 11, 0.92) 0, rgba(13, 16, 11, 0.8) 45%, rgba(13, 16, 11, 0.6) 100%);
+}
+/* Editorial index */
+.index.scene .scene-bg {
+  top: -18vh;
+  bottom: -14vh;
+  left: calc(var(--gutter) * -1);
+  right: calc(var(--gutter) * -1);
+  --shade: linear-gradient(rgba(13, 16, 11, 0.7), rgba(13, 16, 11, 0.7));
+}
+/* Bestiary head: night-blue tint so it hands off to the section sky */
+.scene-bestiary .scene-bg {
+  top: calc(var(--section) * -1);
+  bottom: -34vh;
+  left: calc(var(--gutter) * -1);
+  right: calc(var(--gutter) * -1);
+  --shade: linear-gradient(rgba(13, 18, 32, 0.62), rgba(13, 18, 32, 0.62));
+}
+/* Classes: tinted by the selected class accent */
+.scene-bg-classes {
+  --shade:
+    radial-gradient(60% 50% at 80% 40%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%),
+    linear-gradient(rgba(13, 16, 11, 0.8), rgba(13, 16, 11, 0.8));
+}
+/* Footer: strongest at the invitation, gone before the wordmark */
+.scene-bg-footer {
+  --shade: linear-gradient(rgba(13, 16, 11, 0.66), rgba(13, 16, 11, 0.66));
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 22vh, #000 48%, transparent 88%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 22vh, #000 48%, transparent 88%);
+}
+
+/* Slow push-in tied to scroll where the browser supports scroll timelines */
+@supports (animation-timeline: view()) {
+  .scene-bg { view-timeline: --scene block; }
+  .scene-pin video {
+    animation: scene-drift linear both;
+    animation-timeline: --scene;
+  }
+}
+@keyframes scene-drift {
+  from { transform: scale(1.14); }
+  to { transform: scale(1); }
+}
+.reduced .scene-pin video { animation: none; }
+
+@media (max-width: 860px) {
+  .scene-bg { --fade: 14vh; }
+  .scene-bg-left { --shade: linear-gradient(rgba(13, 16, 11, 0.74), rgba(13, 16, 11, 0.74)); }
+}
+
+
 @media (max-width: 1100px) {
   .hero-title { grid-column: 1 / 11; }
   .hero-plate { grid-column: 7 / 13; }
