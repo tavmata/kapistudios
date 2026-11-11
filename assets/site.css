@@ -237,6 +237,47 @@ a.chip:hover{background:var(--volt);color:var(--void-950)}
 .footer-note{justify-self:end;max-width:30ch;text-align:right;color:var(--text-soft);display:grid;gap:1rem;font-size:.95rem}
 .footer-wordmark{position:relative;z-index:1;display:flex;justify-content:center;font-family:var(--font-display);font-size:clamp(6rem,27vw,30rem);font-weight:900;font-stretch:118%;text-transform:uppercase;line-height:.74;letter-spacing:-.04em;color:var(--void-800);-webkit-text-stroke:1.5px rgba(160,185,255,.16);user-select:none;transform:translateY(10%);margin:0}
 
+/* press kit */
+.display-sm{font-family:var(--font-display);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1;color:var(--ice-50);text-wrap:balance;font-size:clamp(1.4rem,1rem + 1.4vw,2.1rem)}
+.press-h{margin:3rem 0 1rem;scroll-margin-top:6rem}
+.press-sub{margin:2rem 0 .8rem;font-size:1.05rem;font-weight:800;text-transform:uppercase;color:var(--ice-50)}
+.press-hero{display:grid;grid-template-columns:1fr auto;gap:1.4rem;align-items:center;padding:1.6rem;box-shadow:var(--shadow-plate),inset 0 3px 0 var(--volt);scroll-margin-top:6rem}
+.press-hero p{color:var(--text-soft);margin-top:.5rem;max-width:58ch}
+.press-dl{display:inline-flex;flex-direction:column;gap:.15rem;padding:.8rem 1.2rem;border-radius:var(--radius-sm);background:var(--volt);color:var(--void-950);text-decoration:none;font-weight:800;box-shadow:0 5px 0 var(--volt-shadow);transition:transform .2s var(--ease-spring),box-shadow .2s}
+.press-dl small{font-family:var(--font-mono);font-size:.66rem;font-weight:500;letter-spacing:.06em;opacity:.8}
+.press-dl:hover{color:var(--void-950);background:var(--volt-hot);transform:translateY(-2px)}
+.press-dl:active{transform:translateY(3px);box-shadow:0 1px 0 var(--volt-shadow)}
+.press-dls{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1rem}
+.press-dls .press-dl{background:var(--void-850);color:var(--ice-50);box-shadow:inset 0 0 0 1.5px var(--hairline-strong)}
+.press-dls .press-dl:hover{box-shadow:inset 0 0 0 1.5px var(--volt);color:var(--volt);background:var(--void-800)}
+.press-facts{min-width:0}
+.press-facts th{width:11rem;text-align:left;vertical-align:top}
+.press-text{padding:1.1rem 1.3rem;margin-bottom:.9rem;border-radius:var(--radius-sm);background:var(--void-850);box-shadow:inset 0 0 0 1px var(--hairline)}
+.press-text .mono{margin-bottom:.5rem;color:var(--volt)}
+.press-text p:last-child{color:var(--text);line-height:1.7;max-width:80ch;user-select:all}
+.press-angles{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.press-angles .panel{margin:0;padding:1.3rem 1.3rem 1.1rem}
+.press-angles h3{font-size:1.05rem;font-weight:800;color:var(--ice-50);margin-bottom:.5rem}
+.press-angles p{color:var(--text-soft);font-size:.95rem;line-height:1.6}
+.press-shots,.press-art{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.press-art{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));align-items:start}
+.press-shot{margin:0;border-radius:var(--radius-sm);overflow:hidden;background:var(--void-850);box-shadow:inset 0 0 0 1px var(--hairline)}
+.press-shot img{width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .4s var(--ease-out)}
+.press-art .press-shot img{aspect-ratio:auto}
+.press-logo img{padding:1rem;background:repeating-conic-gradient(var(--void-800) 0 25%,var(--void-850) 0 50%) 50%/18px 18px}
+.press-shot a:hover img{transform:scale(1.03)}
+.press-shot figcaption{display:flex;justify-content:space-between;gap:.6rem;padding:.6rem .8rem;font-size:.85rem;color:var(--text-soft)}
+.press-shot figcaption a{font-family:var(--font-mono);font-size:.7rem;text-decoration:none}
+.press-video{border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-plate);background:var(--void-950)}
+.press-video video{width:100%;height:auto;aspect-ratio:16/9}
+.press-prose{max-width:72ch}
+.press-contact p:first-child{font-size:1.1rem;color:var(--ice-50)}
+.press-contact p{margin-bottom:.6rem}
+@media (max-width:640px){
+  .press-hero{grid-template-columns:1fr}
+  .press-facts th{width:auto;white-space:normal}
+}
+
 /* reveal on scroll: only hidden when the script marked the page, so crawlers and no-JS readers see everything */
 .js .reveal{opacity:0;transform:translateY(30px) scale(.96);transition:opacity .4s var(--ease-out),transform .6s var(--ease-snap)}
 .js .reveal.in{opacity:1;transform:none}
