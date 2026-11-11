@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kapistudios.kich.dev.br/sitemap.xml

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kapi Studios &bull; Perca-se devagar na mata</title>
+  <link rel="canonical" href="https://kapistudios.kich.dev.br/" />
   <meta name="description" content="Kapi Studios é um pequeno estúdio brasileiro de jogos. Conheça 2D MMORPG, uma aventura sem pressa por matas encantadas, rios mansos e magia antiga." />
   <meta name="theme-color" content="#11140f" />
   <meta property="og:type" content="website" />
@@ -65,6 +66,8 @@
       <a href="#bestiario" class="nav-link" data-cursor="link"><span class="nav-num">02</span>Bestiário</a>
       <a href="#classes" class="nav-link" data-cursor="link"><span class="nav-num">03</span>As trilhas</a>
       <a href="#estudio" class="nav-link" data-cursor="link"><span class="nav-num">04</span>Quem faz</a>
+      <a href="/mmorpg/" class="nav-link" data-cursor="link"><span class="nav-num">05</span>O jogo</a>
+      <a href="/blog/" class="nav-link" data-cursor="link"><span class="nav-num">06</span>Blog</a>
       <a href="https://mmorpg.kich.dev.br" target="_blank" rel="noopener" class="nav-link nav-link-mobile-cta">Entrar na mata</a>
     </nav>
 
@@ -233,14 +236,14 @@
         <div class="marquee-track">
           <ul class="marquee-group">
             <li>Dragões <em>de verdade</em></li><li aria-hidden="true"><svg><use href="#spark"/></svg></li>
-            <li><em>Quatro</em> trilhas de classe</li><li aria-hidden="true"><svg><use href="#spark"/></svg></li>
+            <li><em>Cinco</em> trilhas de classe</li><li aria-hidden="true"><svg><use href="#spark"/></svg></li>
             <li>Chefes em <em>fúria</em></li><li aria-hidden="true"><svg><use href="#spark"/></svg></li>
             <li>Mascotes <em>&amp;</em> montarias</li><li aria-hidden="true"><svg><use href="#spark"/></svg></li>
             <li>Servidor brasileiro</li><li aria-hidden="true"><svg><use href="#spark"/></svg></li>
           </ul>
           <ul class="marquee-group" aria-hidden="true">
             <li>Dragões <em>de verdade</em></li><li><svg><use href="#spark"/></svg></li>
-            <li><em>Quatro</em> trilhas de classe</li><li><svg><use href="#spark"/></svg></li>
+            <li><em>Cinco</em> trilhas de classe</li><li><svg><use href="#spark"/></svg></li>
             <li>Chefes em <em>fúria</em></li><li><svg><use href="#spark"/></svg></li>
             <li>Mascotes <em>&amp;</em> montarias</li><li><svg><use href="#spark"/></svg></li>
             <li>Servidor brasileiro</li><li><svg><use href="#spark"/></svg></li>
@@ -540,7 +543,7 @@
 
       <div class="classes-layout">
         <div class="classes-intro reveal">
-          <h2 class="display-lg" id="classes-title">Quatro jeitos de <em>atravessar</em> a mesma floresta.</h2>
+          <h2 class="display-lg" id="classes-title">Cinco jeitos de <em>atravessar</em> a mesma floresta.</h2>
           <p>Cada classe tem a sua árvore de talentos, seus feitiços e uma opinião muito forte sobre como lidar com o desconhecido.</p>
         </div>
 
@@ -548,14 +551,17 @@
           <button type="button" class="class-tab is-active" role="tab" id="tab-guerreiro" aria-controls="panel-guerreiro" aria-selected="true" data-accent="#b8c4d2" data-cursor="link">
             <span class="mono">i.</span><span class="class-name">Guerreiro</span>
           </button>
-          <button type="button" class="class-tab" role="tab" id="tab-hemomante" aria-controls="panel-hemomante" aria-selected="false" tabindex="-1" data-accent="#c25a3f" data-cursor="link">
-            <span class="mono">ii.</span><span class="class-name">Hemomante</span>
+          <button type="button" class="class-tab" role="tab" id="tab-curandeiro" aria-controls="panel-curandeiro" aria-selected="false" tabindex="-1" data-accent="#7fc4a6" data-cursor="link">
+            <span class="mono">ii.</span><span class="class-name">Curandeiro</span>
           </button>
           <button type="button" class="class-tab" role="tab" id="tab-mago" aria-controls="panel-mago" aria-selected="false" tabindex="-1" data-accent="#9aa1d6" data-cursor="link">
             <span class="mono">iii.</span><span class="class-name">Mago</span>
           </button>
           <button type="button" class="class-tab" role="tab" id="tab-cacador" aria-controls="panel-cacador" aria-selected="false" tabindex="-1" data-accent="#d9a352" data-cursor="link">
             <span class="mono">iv.</span><span class="class-name">Caçador</span>
+          </button>
+          <button type="button" class="class-tab" role="tab" id="tab-bardo" aria-controls="panel-bardo" aria-selected="false" tabindex="-1" data-accent="#bd9fe8" data-cursor="link">
+            <span class="mono">v.</span><span class="class-name">Bardo</span>
           </button>
         </div>
 
@@ -578,22 +584,22 @@
             <dl class="panel-sig"><dt class="mono">golpe assinatura</dt><dd>Quebra-Terra &amp; Bastião</dd></dl>
             <ul class="panel-tags"><li>escudo</li><li>montante</li><li>resistência</li></ul>
           </article>
-          <article class="class-panel" role="tabpanel" id="panel-hemomante" aria-labelledby="tab-hemomante" hidden>
+          <article class="class-panel" role="tabpanel" id="panel-curandeiro" aria-labelledby="tab-curandeiro" hidden>
             <figure class="panel-hero">
               <span class="hero-ring" aria-hidden="true"></span>
               <span class="hero-sparks" aria-hidden="true"><i></i><i></i><i></i></span>
-              <canvas class="hero-canvas" data-preset="cinder_pyromancer" width="320" height="300" aria-label="Modelo animado do Hemomante"></canvas>
+              <canvas class="hero-canvas" data-preset="sanctified_cleric" width="320" height="300" aria-label="Modelo animado do Curandeiro"></canvas>
               <div class="hero-controls">
-                <button type="button" class="chip-btn is-active" data-hero-preset="cinder_pyromancer">Manto de Brasa</button>
-                <button type="button" class="chip-btn" data-hero-preset="void_demon">Pacto Carmesim</button>
+                <button type="button" class="chip-btn is-active" data-hero-preset="sanctified_cleric">Clériga Consagrada</button>
+                <button type="button" class="chip-btn" data-hero-preset="maiden_braid">Donzela da Mata</button>
                 <button type="button" class="chip-btn chip-action" data-hero-action="attack">Conjurar</button>
               </div>
             </figure>
-            <p class="mono panel-role">Dreno vital &middot; Sacrifício</p>
-            <blockquote class="panel-quote">&ldquo;Cada arranhão é só um empréstimo.&rdquo;</blockquote>
-            <p class="panel-desc">Faz da ferida combustível. Magia de sangue, lanças carmesins e pactos que sempre cobram a conta.</p>
-            <dl class="panel-sig"><dt class="mono">golpe assinatura</dt><dd>Lança Carmesim &amp; Pacto</dd></dl>
-            <ul class="panel-tags"><li>sangue</li><li>cura</li><li>lanças</li></ul>
+            <p class="mono panel-role">Cura &middot; Suporte</p>
+            <blockquote class="panel-quote">&ldquo;Respira fundo. Eu cuido do resto.&rdquo;</blockquote>
+            <p class="panel-desc">Luz que fecha ferida alheia. Cura o grupo inteiro, devolve vida e mana e ainda acerta o inimigo com um bumerangue sagrado.</p>
+            <dl class="panel-sig"><dt class="mono">golpe assinatura</dt><dd>Cura Divina &amp; Julgamento</dd></dl>
+            <ul class="panel-tags"><li>cura</li><li>luz</li><li>grupo</li></ul>
           </article>
           <article class="class-panel" role="tabpanel" id="panel-mago" aria-labelledby="tab-mago" hidden>
             <figure class="panel-hero">
@@ -628,6 +634,22 @@
             <p class="panel-desc">Conhece cada trilha da mata. Arco longo, armadilhas e um bicho fiel sempre na cola.</p>
             <dl class="panel-sig"><dt class="mono">golpe assinatura</dt><dd>Flecha Silvestre &amp; Vínculo</dd></dl>
             <ul class="panel-tags"><li>arco</li><li>rastros</li><li>mascotes</li></ul>
+          </article>
+          <article class="class-panel" role="tabpanel" id="panel-bardo" aria-labelledby="tab-bardo" hidden>
+            <figure class="panel-hero">
+              <span class="hero-ring" aria-hidden="true"></span>
+              <span class="hero-sparks" aria-hidden="true"><i></i><i></i><i></i></span>
+              <canvas class="hero-canvas" data-preset="tribal_shaman" width="320" height="300" aria-label="Modelo animado do Bardo"></canvas>
+              <div class="hero-controls">
+                <button type="button" class="chip-btn is-active" data-hero-preset="tribal_shaman">Xamã Tribal</button>
+                <button type="button" class="chip-btn chip-action" data-hero-action="attack">Tocar</button>
+              </div>
+            </figure>
+            <p class="mono panel-role">Ritmo &middot; Apoio</p>
+            <blockquote class="panel-quote">&ldquo;Segue o compasso que o resto vem.&rdquo;</blockquote>
+            <p class="panel-desc">Luta no ritmo: cada música tem o seu compasso, e acertar as notas na hora aumenta o dano. As canções dão velocidade, adormecem inimigos e fecham com um acorde em área.</p>
+            <dl class="panel-sig"><dt class="mono">golpe assinatura</dt><dd>Crescendo &amp; Canção de Ninar</dd></dl>
+            <ul class="panel-tags"><li>ritmo</li><li>canções</li><li>acorde final</li></ul>
           </article>
         </div>
       </div>
@@ -711,6 +733,9 @@
           <li><a href="#mundo" data-cursor="link">O mundo</a></li>
           <li><a href="#bestiario" data-cursor="link">Bestiário</a></li>
           <li><a href="#classes" data-cursor="link">As trilhas</a></li>
+          <li><a href="/mmorpg/" data-cursor="link">Guia do jogo</a></li>
+          <li><a href="/mmorpg/forja/" data-cursor="link">Forja e refino</a></li>
+          <li><a href="/blog/" data-cursor="link">Blog</a></li>
         </ul>
       </div>
       <div class="footer-col">

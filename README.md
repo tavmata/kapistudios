@@ -18,6 +18,8 @@ kapistudios/
 │   ├── js/                     # Renderizadores procedurais em Canvas (monstros e personagens)
 │   ├── kapi-mark.svg           # Marca da capivara
 │   ├── kapi-studios-logo.svg   # Logotipo completo
+│   ├── mmorpg/                 # Imagens do jogo usadas nas páginas geradas
+│   ├── site.css                # Estilo das páginas geradas (guia do jogo e blog)
 │   └── mmorpg-preview.mp4      # Vídeo de demonstração do 2D MMORPG
 │   └── video/                  # Fundos de gameplay que tocam ao rolar (bg-<clipe>-land/port.mp4 + pôster .webp)
 ├── index.html                  # Página principal (HTML semântico e acessível)
@@ -28,6 +30,21 @@ kapistudios/
 ```
 
 ---
+
+## Páginas geradas (guia do jogo e blog)
+
+As pastas `mmorpg/` e `blog/`, o `sitemap.xml` e o `robots.txt` são **gerados**, não escritos à mão. Não edite esses arquivos: rode o gerador.
+
+```bash
+node tools/build-studio-site.js          # escreve os arquivos
+node tools/build-studio-site.js --check  # falha se estiverem desatualizados
+```
+
+- `/mmorpg/` é a página do jogo; `/mmorpg/classes/`, `/mmorpg/forja/` e `/mmorpg/drops/` leem os dados do próprio jogo (árvore de habilidades, regras de refino, drops), e `/mmorpg/melhores-mmorpgs-de-navegador/` vem de `server/seo/browserGames.js`.
+- O blog vem dos arquivos Markdown em `server/content/blog/` (veja o cabeçalho de `server/seo/blog.js`). Para um post novo, crie o `.md`, rode o gerador e publique.
+- O visual está em `assets/site.css` e as imagens do jogo em `assets/mmorpg/`.
+- O `deploy.ps1` roda o gerador antes de empacotar, e um teste (`publicSite.test.js`) falha se os arquivos commitados estiverem desatualizados.
+- As páginas antigas em `mmorpg.kich.dev.br/classes`, `/forja`, `/drops`, `/descobrir` e `/blog` redirecionam (301) para cá.
 
 ## Visualização Local
 
