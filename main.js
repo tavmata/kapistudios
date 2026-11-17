@@ -468,7 +468,7 @@ import {
     resize();
     window.addEventListener('resize', resize, { passive: true });
 
-    const palette = [[255, 214, 10], [76, 201, 255], [190, 215, 255], [76, 201, 255]];
+    const palette = [[255, 207, 58], [196, 163, 255], [243, 225, 196], [196, 163, 255]];   // gold, violet lightning, cream (the Kapi Studios palette)
     const flies = Array.from({ length: parseInt(canvas.dataset.count || '24', 10) }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
@@ -903,8 +903,8 @@ import {
     legendary: '245,158,11',
     mythic: '239,68,68',
   };
-  const ARC_RGB = '120,200,255';
-  const VOLT_RGB = '255,214,10';
+  const ARC_RGB = '196,163,255';    // violet lightning
+  const VOLT_RGB = '255,207,58';     // brand gold
   const rand = (a, b) => a + Math.random() * (b - a);
 
   const fx = (function createFx() {
